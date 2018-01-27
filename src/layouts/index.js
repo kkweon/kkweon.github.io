@@ -4,7 +4,9 @@ import Helmet from "react-helmet";
 
 import Header from "../components/Header";
 import "./index.css";
-import "prismjs/themes/prism.css";
+
+// syntax highlighting
+import "prismjs/themes/prism-okaidia.css";
 
 const TemplateWrapper = ({ children }) => (
   <div>

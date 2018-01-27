@@ -8,7 +8,7 @@ const Post = ({ title, date, excerpt, path }) => {
       <p>{date}</p>
       <p>{excerpt}</p>
 
-      <a href={path}>READ MORE</a>
+      <Link to={path}>READ MORE</Link>
     </div>
   );
 };

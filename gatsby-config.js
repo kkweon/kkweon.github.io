@@ -5,6 +5,12 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-typography",
+      options: {
+        pathToConfigModule: "src/utils/typography.js",
+      },
+    },
 
     {
       resolve: "gatsby-source-filesystem",
@@ -16,7 +22,22 @@ module.exports = {
     {
       resolve: "gatsby-transformer-remark",
       options: {
-        classPrefix: "language-",
+        plugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 590,
+            },
+          },
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-responsive-iframe",
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              classPrefix: "language-",
+            },
+          },
+        ],
       },
     },
   ],
