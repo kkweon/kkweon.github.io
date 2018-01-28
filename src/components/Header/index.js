@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import { PRIMARY_COLOR } from "../../utils/variables";
+import { rhythm } from "../../utils/typography";
 
 const LinkStyle = {
   color: "black",
@@ -26,7 +27,7 @@ const Header = () => (
       }}
     >
       <li>
-        <h2 css={{ margin: 0 }}>
+        <h2>
           <Link to="/" className="nav-link">
             Mo's Notes
           </Link>
@@ -34,7 +35,7 @@ const Header = () => (
       </li>
 
       <li css={{ marginLeft: "auto" }}>
-        <h2 css={{ margin: 0 }}>
+        <h2>
           <Link
             to="/about"
             className="nav-link"
@@ -42,6 +43,18 @@ const Header = () => (
           >
             About
           </Link>
+        </h2>
+      </li>
+
+      <li css={{ marginLeft: rhythm(0.5) }}>
+        <h2>
+          <a
+            href="https://kkweon.github.io/projects"
+            className="nav-link"
+            target="_blank"
+          >
+            Projects
+          </a>
         </h2>
       </li>
     </ul>
