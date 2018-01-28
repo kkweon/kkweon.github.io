@@ -53,8 +53,8 @@ const ReadMoreBtn = ({ to }) => {
 const Post = ({ slug, title, date, excerpt }) => {
   return (
     <PostLink className="post">
-      <h3>{title}</h3>
-      <p>{date}</p>
+      <h3 css={{ marginBottom: rhythm(0.2) }}>{title}</h3>
+      <p css={{ color: "#999", marginBottom: rhythm(0.5) }}>{date}</p>
       <p>{excerpt}</p>
       <ReadMoreBtn to={slug} />
     </PostLink>

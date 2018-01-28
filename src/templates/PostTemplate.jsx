@@ -7,12 +7,14 @@ import "katex/dist/katex.min.css";
 export default function Template({ data }) {
   const { frontmatter, html, fields: { slug }, excerpt } = data.markdownRemark;
 
+  const description = frontmatter.description || excerpt;
+
   return (
     <section className="post-container">
       <Meta
         title={frontmatter.title}
         date={frontmatter.date}
-        description={frontmatter.description || excerpt}
+        description={description}
         tags={frontmatter.keywords}
       />
       <article className="post">

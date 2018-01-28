@@ -59,7 +59,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           edges: result.data.allMarkdownRemark.edges,
           createPage: createPage,
           pageTemplate: "src/templates/Index.jsx",
-          pageLength: 5,
+          pageLength: 10,
           pathPrefix: "",
           context: {},
         });
