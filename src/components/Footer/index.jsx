@@ -18,7 +18,7 @@ export default function Footer(props) {
           css={{
             display: "flex",
             justifyContent: "space-around",
-            width: "20%",
+            maxWidth: "200px",
             margin: "0 auto",
           }}
         >
