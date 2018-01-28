@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "gatsby-link";
-
 import { PRIMARY_COLOR } from "../../utils/variables";
 
 const LinkStyle = {
@@ -28,7 +27,7 @@ const Header = () => (
     >
       <li>
         <h2 css={{ margin: 0 }}>
-          <Link to="/" css={LinkStyle}>
+          <Link to="/" className="nav-link">
             Mo's Notes
           </Link>
         </h2>
@@ -36,7 +35,11 @@ const Header = () => (
 
       <li css={{ marginLeft: "auto" }}>
         <h2 css={{ margin: 0 }}>
-          <Link to="/about" css={LinkStyle} activeStyle={{ color: "grey" }}>
+          <Link
+            to="/about"
+            className="nav-link"
+            activeStyle={{ color: "grey" }}
+          >
             About
           </Link>
         </h2>

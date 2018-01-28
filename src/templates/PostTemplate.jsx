@@ -27,7 +27,7 @@ export default function Template({ data }) {
         />
       </article>
 
-      <Disqus identifier={slug} url={slug} />
+      <Disqus identifier={slug} />
     </section>
   );
 }

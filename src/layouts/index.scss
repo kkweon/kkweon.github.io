@@ -1,3 +1,4 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,4 +13,12 @@
 
 body {
   background-color: #eee;
+}
+
+.nav-link {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: #0381ff;
+  }
 }

@@ -1,15 +1,14 @@
 import React from "react";
-import ReactDisqusThread from "react-disqus-thread";
+import ReactDisqusComments from "react-disqus-comments";
 
-const Disqus = ({ identifier, url }) => {
+const Disqus = ({ identifier }) => {
   return (
-    <ReactDisqusThread
+    <ReactDisqusComments
       shortname="kyungmokweon"
       identifier={identifier}
+      url={process.env.SITEURL + "/" + identifier}
       title="My Disqus"
-      url={process.env.SITEURL + "/" + url}
-      category_id="123456"
-      onNewComment={comment => console.log(comment)}
+      onNewComment={comment => console.log(comment.text)}
     />
   );
 };

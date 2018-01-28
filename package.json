@@ -33,7 +33,7 @@
     "gatsby-source-filesystem": "^1.5.15",
     "gatsby-transformer-remark": "^1.7.30",
     "prettier": "^1.10.2",
-    "react-disqus-thread": "^0.4.0",
+    "react-disqus-comments": "^1.1.1",
     "typography-theme-bootstrap": "^0.16.7"
   }
 }
