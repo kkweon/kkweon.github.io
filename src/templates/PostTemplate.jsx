@@ -1,6 +1,7 @@
 import React from "react";
 import Disqus from "../components/Disqus";
 import Meta from "../components/Meta";
+import AddThis from "../components/AddThis";
 import "katex/dist/katex.min.css";
 
 export default function Template({ data }) {
@@ -27,6 +28,7 @@ export default function Template({ data }) {
         />
       </article>
 
+      <AddThis />
       <Disqus identifier={slug} />
     </section>
   );
