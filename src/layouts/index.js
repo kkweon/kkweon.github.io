@@ -11,10 +11,13 @@ import "prismjs/themes/prism-okaidia.css";
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Gatsby Default Starter"
+      title={process.env.SITETITLE}
       meta={[
-        { name: "description", content: "Sample" },
-        { name: "keywords", content: "sample, something" },
+        { name: "description", content: "My Blog" },
+        {
+          name: "keywords",
+          content: "python, react, web, machine learning, ai",
+        },
       ]}
     />
     <Header />
@@ -22,7 +25,7 @@ const TemplateWrapper = ({ children }) => (
       style={{
         margin: "0 auto",
         maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
+        padding: "0 1.0875rem 1.45rem",
         paddingTop: 0,
       }}
     >

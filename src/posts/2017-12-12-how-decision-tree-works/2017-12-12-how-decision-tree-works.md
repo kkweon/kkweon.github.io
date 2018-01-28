@@ -32,19 +32,19 @@ Suppose we want to predict **speed**. Either *slow* or *fast*.
 The base entropy is 1 because
 
 $$
-\begin{align*}
+\begin{aligned}
 p_{slow} &= 0.5 \\
 p_{fast} &= 0.5 \\
-\end{align*}
+\end{aligned}
 $$
 
 
 $$
-\begin{align*}
+\begin{aligned}
 \text{entropy} &= - p_{slow} \log_2 p_{slow} - p_{fast} \log_2 p_{fast} \\
                &= - 0.5 \log_2 0.5 - 0.5 \log_2 0.5 \\
                &= - \log_2 0.5 = 1.0
-\end{align*}
+\end{aligned}
 $$
 
 
@@ -78,17 +78,18 @@ we have two cases when the grade is *steep* or *flat*
 There are 2 slow and 1 fast examples. Therefore,
 
 $$
-\begin{align*}
-p_{slow} &= \frac{2}{3} \\
-p_{fast} &= \frac{1}{3}
-\end{align*}
+p_{slow} = \frac{2}{3}
 $$
 
 $$
-\begin{align*}
+p_{fast} = \frac{1}{3}
+$$
+
+$$
+\begin{aligned}
 \text{entropy} &= - p_{slow} \log_2 p_{slow} - p_{fast} \log_2 p_{fast} \\
                &\approx 0.9184
-\end{align*}
+\end{aligned}
 $$
 
 
@@ -114,11 +115,15 @@ $$ \text{Information Gain} = 1.0 - e_1 \approx 0.3112 $$
 If we repeat for other features (*Bumpiness*, *Speed Limit*)
 
 $$
-\begin{align*}
-\text{Information Gain for $\textbf{grade}$} &= 0.311 \\
-\text{Information Gain for $\textbf{bumpiness}$} &= 0 \\
-\text{Information Gain for $\textbf{speed limit}$} &= 1
-\end{align*}
+\text{Information Gain for \textbf{grade}} = 0.311
+$$
+
+$$
+\text{Information Gain for \textbf{bumpiness}} = 0
+$$
+
+$$
+\text{Information Gain for \textbf{speed limit}}= 1
 $$
 
 Therefore, the next split will occur around **Speed Limit** because it has the greatest information gain.

@@ -1,10 +1,11 @@
 const path = require("path");
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Default Starter",
+    title: process.env.TITLE,
   },
   plugins: [
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-glamor",
     {
       resolve: "gatsby-plugin-sass",
       options: {
@@ -37,6 +38,7 @@ module.exports = {
           },
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-responsive-iframe",
+          "gatsby-remark-katex",
           {
             resolve: "gatsby-remark-prismjs",
             options: {

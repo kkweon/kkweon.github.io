@@ -6,6 +6,7 @@
 
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const createPaginatedPages = require("gatsby-paginate");
 
 function slugify(text) {
   return text
@@ -36,32 +37,52 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
+              id
               fields {
                 slug
               }
+              frontmatter {
+                title
+                date(formatString: "MMMM DD, YYYY")
+              }
+              excerpt
             }
           }
         }
       }
-    `).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve(
-            __dirname,
-            "src",
-            "templates",
-            "PostTemplate.jsx",
-          ),
-          context: {
-            slug: node.fields.slug,
-          },
+    `)
+      .then(result => {
+        createPaginatedPages({
+          edges: result.data.allMarkdownRemark.edges,
+          createPage: createPage,
+          pageTemplate: "src/templates/Index.jsx",
+          pageLength: 5,
+          pathPrefix: "",
+          context: {},
         });
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve(
+              __dirname,
+              "src",
+              "templates",
+              "PostTemplate.jsx",
+            ),
+            context: {
+              slug: node.fields.slug,
+            },
+          });
+        });
+        resolve();
+      })
+      .catch(error => {
+        console.error("=====================");
+        console.error(error);
+        console.error("=====================");
       });
-      resolve();
-    });
   });
 };
