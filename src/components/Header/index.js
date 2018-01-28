@@ -26,7 +26,27 @@ const Header = () => (
         listStyle: "none",
       }}
     >
-      <li>
+      <li
+        css={{
+          display: "none",
+          "@media screen and (max-width: 600px)": {
+            display: "inline-block",
+          },
+        }}
+      >
+        <h2>
+          <Link to="/" className="nav-link">
+            Mo
+          </Link>
+        </h2>
+      </li>
+      <li
+        css={{
+          "@media screen and (max-width: 600px)": {
+            display: "none",
+          },
+        }}
+      >
         <h2>
           <Link to="/" className="nav-link">
             Mo's Notes
@@ -46,7 +66,7 @@ const Header = () => (
         </h2>
       </li>
 
-      <li css={{ marginLeft: rhythm(0.5) }}>
+      <li css={{ marginLeft: rhythm(1) }}>
         <h2>
           <a
             href="https://kkweon.github.io/projects"

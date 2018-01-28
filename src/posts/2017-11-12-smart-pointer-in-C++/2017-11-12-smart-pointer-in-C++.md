@@ -19,7 +19,7 @@ The bread-and-butter ones are **unique pointer** and **shared pointer**.
 
 ## Unique pointer
 
-``` c++
+```cpp
 #include <memory>
 
 // (preferred way)
@@ -37,7 +37,7 @@ std::unique_ptr<T> ptr(new T());
 ### Usage
 - It can be used just like a regular pointer.
 
-```c++
+```cpp
 ptr->method();
 ```
 
@@ -56,7 +56,7 @@ When there is no reference, its memory will be released.
 ### Usage
 - It's same as `unique_ptr`
 
-```c++
+```cpp
 std::shared_ptr<T> var = std::make_shared<T>();
 // ok
 std::shared_ptr<T> another = var;
@@ -65,7 +65,7 @@ std::shared_ptr<T> another = var;
 ## Weak pointer
 - It's like a `shared_ptr` but no reference counter is changed.
 
-```c++
+```cpp
 std::weak_ptr<T> var;
 {
   std::shared_ptr<T> shared = std::make_shared<T>();
