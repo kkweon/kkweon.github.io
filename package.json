@@ -35,6 +35,7 @@
     "gatsby-remark-responsive-iframe": "^1.4.16",
     "gatsby-source-filesystem": "^1.5.15",
     "gatsby-transformer-remark": "^1.7.30",
+    "glamorous": "^4.11.4",
     "prettier": "^1.10.2",
     "react-disqus-comments": "^1.1.1",
     "typography-theme-bootstrap": "^0.16.7"

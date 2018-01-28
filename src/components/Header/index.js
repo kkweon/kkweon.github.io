@@ -3,13 +3,26 @@ import Link from "gatsby-link";
 import { PRIMARY_COLOR } from "../../utils/variables";
 import { rhythm } from "../../utils/typography";
 import { css } from "glamor";
+import glamorous from "glamorous";
 
-const LinkStyle = css({
-  color: "black",
-  textDecoration: "none",
-  "&:hover": {
-    color: PRIMARY_COLOR,
+const SlideDownFadeIn = css.keyframes({
+  "100%": {
+    opacity: 1,
+    transform: "translatey(0)",
   },
+});
+
+const Nav = glamorous.div({
+  marginBottom: rhythm(1),
+  animation: `1s ${SlideDownFadeIn} .3s forwards`,
+  opacity: 0,
+  transform: `translatey(-20px)`,
+});
+
+const Ul = glamorous.ul({
+  display: "flex",
+  padding: `${rhythm(1)} ${rhythm(0.7)} ${rhythm(0.5)}`,
+  listStyle: "none",
 });
 
 const noMarginBottom = css({
@@ -20,19 +33,9 @@ const marginLeftAuto = css({
 });
 
 const Header = () => (
-  <div
-    css={{
-      marginBottom: "1.45rem",
-    }}
-  >
-    <ul
-      className="container"
-      css={{
-        display: "flex",
-        padding: `${rhythm(1)} ${rhythm(0.7)} ${rhythm(0.5)}`,
-        listStyle: "none",
-      }}
-    >
+  <Nav>
+    <Ul className="container">
+      {" "}
       <li
         css={{
           display: "none",
@@ -41,7 +44,7 @@ const Header = () => (
           },
         }}
       >
-        <h2 css={{ noMarginBottom }}>
+        <h2 {...noMarginBottom}>
           <Link to="/" className="nav-link">
             Mo
           </Link>
@@ -54,15 +57,14 @@ const Header = () => (
           },
         }}
       >
-        <h2 css={{ noMarginBottom }}>
+        <h2 {...noMarginBottom}>
           <Link to="/" className="nav-link">
             Mo's Notes
           </Link>
         </h2>
       </li>
-
-      <li {...css(noMarginBottom, marginLeftAuto)}>
-        <h2 css={{ noMarginBottom }}>
+      <li {...noMarginBottom} {...marginLeftAuto}>
+        <h2 {...noMarginBottom}>
           <Link
             to="/about"
             className="nav-link"
@@ -72,9 +74,8 @@ const Header = () => (
           </Link>
         </h2>
       </li>
-
       <li css={{ marginLeft: rhythm(1) }}>
-        <h2 css={{ noMarginBottom }}>
+        <h2 {...noMarginBottom}>
           <a
             href="https://kkweon.github.io/projects"
             className="nav-link"
@@ -84,8 +85,8 @@ const Header = () => (
           </a>
         </h2>
       </li>
-    </ul>
-  </div>
+    </Ul>
+  </Nav>
 );
 
 export default Header;
