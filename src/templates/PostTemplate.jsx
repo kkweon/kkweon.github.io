@@ -7,7 +7,7 @@ export default function Template({ data }) {
   const { frontmatter, html, fields: { slug }, excerpt } = data.markdownRemark;
 
   return (
-    <section className="container">
+    <section className="post-container">
       <Meta
         title={frontmatter.title}
         date={frontmatter.date}

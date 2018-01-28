@@ -1,3 +1,6 @@
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 * {
   box-sizing: border-box;
@@ -20,5 +23,20 @@ body {
   text-decoration: none;
   &:hover {
     color: #0381ff;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+
+.social-icon {
+  color: #ddd;
+  cursor: pointer;
+
+  &:hover, &:active {
+    color: #fff;
   }
 }

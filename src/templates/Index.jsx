@@ -1,37 +1,12 @@
 import React, { Component } from "react";
 import Link from "gatsby-link";
 import { rhythm } from "../utils/typography";
+import Pagination from "../components/Pagination";
 import {
   PRIMARY_COLOR,
   SECONDARY_COLOR,
   THIRD_COLOR,
 } from "../utils/variables";
-
-const NavLink = props => {
-  if (!props.test) {
-    return (
-      <Link
-        css={{
-          color: "black",
-          backgroundColor: SECONDARY_COLOR,
-          padding: rhythm(0.5),
-          textDecoration: "none",
-
-          "&:hover": {
-            color: "white",
-            backgroundColor: PRIMARY_COLOR,
-          },
-        }}
-        to={props.url}
-      >
-        {" "}
-        {props.text}{" "}
-      </Link>
-    );
-  } else {
-    return <span> </span>;
-  }
-};
 
 const Post = ({ slug, title, date, excerpt }) => {
   return (
@@ -84,21 +59,12 @@ const IndexPage = ({ data, pathContext }) => {
           excerpt={node.excerpt}
         />
       ))}
-
-      <div
-        css={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-        className="pagination"
-      >
-        <div className="pagination__prev">
-          <NavLink test={first} url={previousUrl} text="Go to Previous Page" />
-        </div>
-        <div className="pagination__next">
-          <NavLink test={last} url={nextUrl} text="Go to Next Page" />
-        </div>
-      </div>
+      <Pagination
+        first={first}
+        previousUrl={previousUrl}
+        last={last}
+        nextUrl={nextUrl}
+      />
     </div>
   );
 };

@@ -2,14 +2,22 @@ import React from "react";
 import Link from "gatsby-link";
 import { PRIMARY_COLOR } from "../../utils/variables";
 import { rhythm } from "../../utils/typography";
+import { css } from "glamor";
 
-const LinkStyle = {
+const LinkStyle = css({
   color: "black",
   textDecoration: "none",
   "&:hover": {
     color: PRIMARY_COLOR,
   },
-};
+});
+
+const noMarginBottom = css({
+  marginBottom: 0,
+});
+const marginLeftAuto = css({
+  marginLeft: "auto",
+});
 
 const Header = () => (
   <div
@@ -18,11 +26,10 @@ const Header = () => (
     }}
   >
     <ul
+      className="container"
       css={{
-        margin: "0 auto",
         display: "flex",
-        maxWidth: 960,
-        padding: "1.45rem 1.0875rem",
+        padding: `${rhythm(1)} ${rhythm(0.7)} ${rhythm(0.5)}`,
         listStyle: "none",
       }}
     >
@@ -34,7 +41,7 @@ const Header = () => (
           },
         }}
       >
-        <h2>
+        <h2 css={{ noMarginBottom }}>
           <Link to="/" className="nav-link">
             Mo
           </Link>
@@ -47,15 +54,15 @@ const Header = () => (
           },
         }}
       >
-        <h2>
+        <h2 css={{ noMarginBottom }}>
           <Link to="/" className="nav-link">
             Mo's Notes
           </Link>
         </h2>
       </li>
 
-      <li css={{ marginLeft: "auto" }}>
-        <h2>
+      <li {...css(noMarginBottom, marginLeftAuto)}>
+        <h2 css={{ noMarginBottom }}>
           <Link
             to="/about"
             className="nav-link"
@@ -67,7 +74,7 @@ const Header = () => (
       </li>
 
       <li css={{ marginLeft: rhythm(1) }}>
-        <h2>
+        <h2 css={{ noMarginBottom }}>
           <a
             href="https://kkweon.github.io/projects"
             className="nav-link"
