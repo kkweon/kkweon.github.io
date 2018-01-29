@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
 import Header from "../components/Header";
+import Meta from "../components/Meta";
 import Footer from "../components/Footer";
 import "./index.scss";
 
@@ -11,15 +12,10 @@ import "prismjs/themes/prism-okaidia.css";
 
 const TemplateWrapper = ({ children }) => (
   <div>
-    <Helmet
+    <Meta
       title={process.env.SITETITLE}
-      meta={[
-        { name: "description", content: process.env.SITETITLE },
-        {
-          name: "keywords",
-          content: "python, react, web, machine learning, ai",
-        },
-      ]}
+      description={process.env.SITEDESCRIPTION}
+      tags={process.env.SITETAGS}
     />
     <Header />
     <div
