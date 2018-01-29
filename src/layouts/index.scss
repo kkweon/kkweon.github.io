@@ -36,7 +36,8 @@ body {
   color: #ddd;
   cursor: pointer;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     color: #fff;
   }
 }
@@ -47,4 +48,21 @@ body {
     display: block;
     margin: 0 auto;
   }
+
+  h2 {
+    padding-bottom: .5rem;
+    border-bottom: .15rem solid black;
+  }
+}
+
+
+p>code,
+li>code {
+  border: 1px solid black;
+  color: red;
+  padding: 0.1rem 0.3rem;
+}
+
+.gatsby-highlight {
+  margin-bottom: 1.5rem;
 }

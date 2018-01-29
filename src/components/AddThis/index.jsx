@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 
 class AddThis extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   componentWillMount() {
     // Check if there is `document`
 
