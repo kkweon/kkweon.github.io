@@ -1,11 +1,16 @@
 const path = require("path");
+
 module.exports = {
   siteMetadata: {
-    title: process.env.TITLE,
+    title: "Mo's Notes",
+    siteUrl: "https://kkweon.github.io",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-glamor",
+    {
+      resolve: `gatsby-plugin-sitemap`,
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
