@@ -30,7 +30,11 @@ export default function Template({ data }) {
         />
       </article>
 
-      <AddThis />
+      <AddThis
+        slug={slug}
+        title={frontmatter.title}
+        description={description}
+      />
       <Disqus identifier={slug} />
     </section>
   );
