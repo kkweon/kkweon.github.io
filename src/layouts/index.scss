@@ -60,9 +60,17 @@ p>code,
 li>code {
   border: 1px solid black;
   color: red;
-  padding: 0.1rem 0.3rem;
+  padding: .1rem 0.3rem;
 }
 
 .gatsby-highlight {
   margin-bottom: 1.5rem;
+}
+
+
+$elements: 6;
+@for $i from 1 to $elements {
+  .post:nth-child(#{$i}) {
+    animation-delay: .08s * $i;
+  }
 }
