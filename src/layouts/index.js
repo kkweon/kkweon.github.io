@@ -28,7 +28,9 @@ const TemplateWrapper = ({ children }) => (
       {children()}
     </div>
 
-    <AdSense.Google client="ca-pub-2420244930131504" slot="8479628001" />
+    <div className="container">
+      <AdSense.Google client="ca-pub-2420244930131504" slot="8479628001" />
+    </div>
     <Footer />
   </div>
 );
