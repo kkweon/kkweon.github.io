@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-
+import AdSense from "react-adsense";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
 import Footer from "../components/Footer";
@@ -27,6 +27,8 @@ const TemplateWrapper = ({ children }) => (
     >
       {children()}
     </div>
+
+    <AdSense.Google client="ca-pub-2420244930131504" slot="8479628001" />
     <Footer />
   </div>
 );

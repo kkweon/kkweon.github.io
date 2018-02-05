@@ -1,5 +1,4 @@
 import React from "react";
-import AdSense from "react-adsense";
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {
@@ -45,7 +44,6 @@ module.exports = class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
-          <AdSense.Google client="ca-pub-2420244930131504" slot="" />
         </body>
       </html>
     );
