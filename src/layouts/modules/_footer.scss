@@ -1,0 +1,9 @@
+.social-icon {
+  color: #ddd;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: #fff;
+  }
+}

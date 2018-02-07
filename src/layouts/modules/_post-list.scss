@@ -1,0 +1,6 @@
+$elements: 6;
+@for $i from 1 to $elements {
+  .post:nth-child(#{$i}) {
+    animation-delay: .08s * $i;
+  }
+}

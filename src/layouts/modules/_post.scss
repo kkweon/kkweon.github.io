@@ -1,0 +1,51 @@
+.post__body {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  h2 {
+    border-bottom: .15rem solid $color-black;
+    padding-bottom: .5rem;
+  }
+}
+
+
+p>code,
+li>code {
+  border: 1px solid $color-black;
+  color: $color-red;
+  padding: .1rem .3rem;
+}
+
+.gatsby-highlight {
+  margin-bottom: 1.5rem;
+}
+
+
+blockquote {
+  border-left: 10px solid $color-primary;
+  position: relative;
+
+  &::before {
+    color: $color-lightgray;
+    content: open-quote;
+    font-size: 4em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 1rem;
+  }
+
+  p {
+    color: $color-darkgray;
+    margin-left: 2rem;
+  }
+}
+
+
+.footnotes {
+  p {
+    display: inline-block;
+  }
+}

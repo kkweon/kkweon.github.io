@@ -1,0 +1,27 @@
+$color-black: #000;
+$color-red: #f00;
+$color-primary: #0381ff;
+$color-darkgray: #666;
+$color-lightgray: #ccc;
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #eee;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+}

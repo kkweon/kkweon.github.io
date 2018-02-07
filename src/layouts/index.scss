@@ -1,76 +1,11 @@
 $fa-font-path: "../../node_modules/font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
+
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-}
-
-body {
-  background-color: #eee;
-}
-
-.nav-link {
-  color: black;
-  text-decoration: none;
-  &:hover {
-    color: #0381ff;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 960px;
-}
-
-
-.social-icon {
-  color: #ddd;
-  cursor: pointer;
-
-  &:hover,
-  &:active {
-    color: #fff;
-  }
-}
-
-
-.post__body {
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-
-  h2 {
-    padding-bottom: .5rem;
-    border-bottom: .15rem solid black;
-  }
-}
-
-
-p>code,
-li>code {
-  border: 1px solid black;
-  color: red;
-  padding: .1rem 0.3rem;
-}
-
-.gatsby-highlight {
-  margin-bottom: 1.5rem;
-}
-
-
-$elements: 6;
-@for $i from 1 to $elements {
-  .post:nth-child(#{$i}) {
-    animation-delay: .08s * $i;
-  }
-}
+@import "modules/base";
+@import "modules/footer";
+@import "modules/nav";
+@import "modules/post-list";
+@import "modules/post";
