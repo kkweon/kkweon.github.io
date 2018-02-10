@@ -1,7 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import AdSense from "react-adsense";
+import * as React from "react";
+import * as AdSense from "react-adsense";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
 import Footer from "../components/Footer";
@@ -10,12 +8,16 @@ import "./index.scss";
 // syntax highlighting
 import "prismjs/themes/prism-okaidia.css";
 
-const TemplateWrapper = ({ children }) => (
+interface ITemplateProp {
+  children: () => any;
+}
+
+const TemplateWrapper = ({ children }: ITemplateProp) => (
   <div>
     <Meta
-      title={process.env.SITETITLE}
-      description={process.env.SITEDESCRIPTION}
-      tags={process.env.SITETAGS}
+      title={process.env.SITETITLE || "Mo's notes"}
+      description={process.env.SITEDESCRIPTION || "Mo's notes"}
+      tags={process.env.SITETAGS || "React"}
     />
     <Header />
     <div
@@ -34,9 +36,5 @@ const TemplateWrapper = ({ children }) => (
     <Footer />
   </div>
 );
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
-};
 
 export default TemplateWrapper;

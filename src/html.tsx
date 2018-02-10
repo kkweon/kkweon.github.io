@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 
-let stylesStr;
+let stylesStr: string;
 if (process.env.NODE_ENV === `production`) {
   try {
     stylesStr = require(`!raw-loader!../public/styles.css`);
@@ -9,7 +9,17 @@ if (process.env.NODE_ENV === `production`) {
   }
 }
 
-module.exports = class HTML extends React.Component {
+interface IHtmlProps {
+  body: any;
+  postBodyComponents: any;
+  headComponents: any;
+
+  htmlAttributes: any;
+  bodyAttributes: any;
+  preBodyComponents: any;
+}
+
+module.exports = class HTML extends React.Component<IHtmlProps, void> {
   render() {
     let css;
     if (process.env.NODE_ENV === `production`) {

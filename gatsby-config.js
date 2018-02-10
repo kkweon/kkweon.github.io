@@ -9,6 +9,17 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-glamor",
     {
+      resolve: "gatsby-plugin-typescript",
+      options: {
+        transpileOnly: true, // default
+        compilerOptions: {
+          target: "es5",
+          experimentalDecorators: true,
+          jsx: `react`,
+        }, // default
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
     },
     {
@@ -28,7 +39,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-typography",
       options: {
-        pathToConfigModule: "src/utils/typography.js",
+        pathToConfigModule: "src/utils/typography",
       },
     },
 

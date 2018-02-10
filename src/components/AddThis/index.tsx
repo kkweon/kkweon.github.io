@@ -1,6 +1,14 @@
-import React, { Component } from "react";
+import * as React from "react";
 
-class AddThis extends Component {
+declare var window: any;
+
+interface IProps {
+  slug: string;
+  title: string;
+  description: string;
+}
+
+class AddThis extends React.Component<IProps> {
   componentWillMount() {
     // Check if there is `document`
 
@@ -28,7 +36,8 @@ class AddThis extends Component {
   }
 
   componentWillUnmount() {
-    document.body.removeChild(document.querySelector("#addthis"));
+    const node = document.querySelector("#addthis");
+    if (node) document.body.removeChild(node);
   }
 
   render() {

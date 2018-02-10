@@ -1,14 +1,23 @@
-import React from "react";
+import * as React from "react";
 import ReactDisqusComments from "react-disqus-comments";
 
-const Disqus = ({ identifier }) => {
+
+interface IProp {
+  identifier: string;
+}
+
+interface IComment {
+  text: string;
+}
+
+const Disqus = ({ identifier }: IProp) => {
   return (
     <ReactDisqusComments
       shortname="kyungmokweon"
       identifier={identifier}
       url={process.env.SITEURL + "/" + identifier}
       title="My Disqus"
-      onNewComment={comment => console.log(comment.text)}
+      onNewComment={(comment: IComment) => console.log(comment.text)}
     />
   );
 };

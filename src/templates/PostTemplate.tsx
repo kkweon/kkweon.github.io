@@ -1,10 +1,30 @@
-import React from "react";
+import * as React from "react";
 import Disqus from "../components/Disqus";
 import Meta from "../components/Meta";
 import AddThis from "../components/AddThis";
 import "katex/dist/katex.min.css";
 
-export default function Template({ data }) {
+interface IBlogPost {
+  data: {
+    markdownRemark: {
+      frontmatter: {
+        title: string;
+        date: string;
+        keywords: string;
+        description: string;
+      };
+
+      html: string;
+      fields: {
+        slug: string;
+      };
+
+      excerpt: string;
+    };
+  };
+}
+
+export default function Template({ data }: IBlogPost) {
   const { frontmatter, html, fields: { slug }, excerpt } = data.markdownRemark;
 
   const description = frontmatter.description || excerpt;

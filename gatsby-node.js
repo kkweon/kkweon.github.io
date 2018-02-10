@@ -58,7 +58,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         createPaginatedPages({
           edges: result.data.allMarkdownRemark.edges,
           createPage: createPage,
-          pageTemplate: "src/templates/Index.jsx",
+          pageTemplate: "src/templates/Index.tsx",
           pageLength: 5,
           pathPrefix: "",
           context: {},
@@ -70,7 +70,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               __dirname,
               "src",
               "templates",
-              "PostTemplate.jsx",
+              "PostTemplate.tsx",
             ),
             context: {
               slug: node.fields.slug,

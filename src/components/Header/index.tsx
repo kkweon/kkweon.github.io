@@ -1,11 +1,10 @@
-import React from "react";
+import * as React from "react";
 import Link from "gatsby-link";
-import { PRIMARY_COLOR } from "../../utils/variables";
 import { rhythm } from "../../utils/typography";
-import { css } from "glamor";
+import { css, keyframes } from "glamor";
 import glamorous from "glamorous";
 
-const SlideDownFadeIn = css.keyframes({
+const slideDownFadeIn = keyframes({
   "100%": {
     opacity: 1,
     transform: "translatey(0)",
@@ -14,7 +13,7 @@ const SlideDownFadeIn = css.keyframes({
 
 const Nav = glamorous.div({
   marginBottom: rhythm(1),
-  animation: `1s ${SlideDownFadeIn} .3s forwards`,
+  animation: `1s ${slideDownFadeIn} .3s forwards`,
   opacity: 0,
   transform: `translatey(-20px)`,
 });
@@ -32,31 +31,34 @@ const marginLeftAuto = css({
   marginLeft: "auto",
 });
 
+const marginLeft1R = css({
+  marginLeft: rhythm(1),
+});
+
+const smallScreenDisplayNone = css({
+  "@media screen and (max-width: 600px)": {
+    display: "none",
+  },
+});
+const smallScreenDisplayInline = css({
+  display: "none",
+  "@media screen and (max-width: 600px)": {
+    display: "inline-block",
+  },
+});
+
 const Header = () => (
   <Nav>
     <Ul className="container">
       {" "}
-      <li
-        css={{
-          display: "none",
-          "@media screen and (max-width: 600px)": {
-            display: "inline-block",
-          },
-        }}
-      >
+      <li {...smallScreenDisplayInline}>
         <h2 {...noMarginBottom}>
           <Link to="/" className="nav-link">
             Mo
           </Link>
         </h2>
       </li>
-      <li
-        css={{
-          "@media screen and (max-width: 600px)": {
-            display: "none",
-          },
-        }}
-      >
+      <li {...smallScreenDisplayNone}>
         <h2 {...noMarginBottom}>
           <Link to="/" className="nav-link">
             Mo's Notes
@@ -74,7 +76,7 @@ const Header = () => (
           </Link>
         </h2>
       </li>
-      <li css={{ marginLeft: rhythm(1) }}>
+      <li {...marginLeft1R}>
         <h2 {...noMarginBottom}>
           <a
             href="https://kkweon.github.io/projects"

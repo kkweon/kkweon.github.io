@@ -1,5 +1,14 @@
-import React from "react";
+import * as React from "react";
 import Helmet from "react-helmet";
+
+interface IMetaProp {
+  title: string;
+  tags: string;
+  description: string;
+  date?: string;
+  modifiedDate?: string;
+  image?: string;
+}
 
 export default function Meta({
   title,
@@ -8,17 +17,17 @@ export default function Meta({
   date,
   modifiedDate,
   image,
-}) {
+}: IMetaProp) {
   return (
     <Helmet>
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <title>{title}</title>
       <meta name="keywords" content={tags} />
       <meta name="description" content={description} />
       <meta name="image" content={image} />
-      <meta itemprop="name" content={title} />
-      <meta itemprop="description" content={description} />
-      <meta itemprop="image" content={image} />
+      <meta itemProp="name" content={title} />
+      <meta itemProp="description" content={description} />
+      <meta itemProp="image" content={image} />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
