@@ -15,7 +15,7 @@ import "./index.scss";
 // syntax highlighting
 import "prismjs/themes/prism-okaidia.css";
 
-export default function({ children }: any): JSX.Element {
+export default function({ children }) {
   return (
     <div>
       <Meta

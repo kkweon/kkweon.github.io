@@ -17,11 +17,11 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
+    "serve": "gatsby serve",
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "clean": "rm -rf public .cache",
     "github": "yarn build && ghp-import -f -p -b master public/",
-    "serve": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
