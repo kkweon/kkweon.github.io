@@ -11,9 +11,9 @@ module.exports = {
     {
       resolve: "gatsby-plugin-typescript",
       options: {
-        transpileOnly: true, // default
+        transpileOnly: false, // default
         compilerOptions: {
-          target: "es5",
+          target: "ESNEXT",
           experimentalDecorators: true,
           jsx: `react`,
         }, // default
