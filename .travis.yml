@@ -1,3 +1,21 @@
 language: node_js
 node_js:
   - "8"
+
+install:
+  - yarn
+
+script:
+  - yarn test
+  - yarn build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  local-dir: public
+  target-branch: master
+  keep-history: true
+  commiter-from-gh: true
+  on:
+    branch: gatsby
