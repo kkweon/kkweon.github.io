@@ -72,9 +72,9 @@ const Post = ({ slug, title, date, excerpt }: IPost) => {
   );
 };
 
-interface IPostNode {
+export interface IPostNode {
   node: {
-    id: number;
+    id: number | string;
     excerpt: string;
 
     fields: {
@@ -88,7 +88,7 @@ interface IPostNode {
   };
 }
 
-interface IPathContext {
+export interface IPathContext {
   group: IPostNode[];
   index: number;
   first: boolean;
@@ -96,12 +96,12 @@ interface IPathContext {
   pageCount: number;
 }
 
-interface IData {
+export interface IData {
   data: IPostNode;
   pathContext: IPathContext;
 }
 
-const IndexPage = ({ pathContext }: IData) => {
+export default function({ pathContext }: IData) {
   const { group, index, first, last } = pathContext;
   const previousUrl = index - 1 == 1 ? "" : (index - 1).toString();
   const nextUrl = (index + 1).toString();
@@ -125,6 +125,4 @@ const IndexPage = ({ pathContext }: IData) => {
       />
     </div>
   );
-};
-
-export default IndexPage;
+}

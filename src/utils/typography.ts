@@ -1,5 +1,5 @@
-import Typography from "typography";
 import theme from "typography-theme-bootstrap";
+const Typography = require("typography");
 
 theme.baseFontSize = "18px";
 theme.bodyFontFamily.push("Spoqa Han Sans");
