@@ -10,12 +10,14 @@ script:
   - yarn build
 
 deploy:
+  edge:
+    branch: v1.8.47
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
   local-dir: public
   target-branch: master
-  keep-history: true
+  keep-history: false
   commiter-from-gh: true
   on:
     branch: gatsby
