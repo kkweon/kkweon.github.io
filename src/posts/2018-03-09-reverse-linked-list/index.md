@@ -87,3 +87,26 @@ Node* reverseLinkedList(Node* head) {
   return prev;
 }
 ```
+
+### Recursive
+
+We can also define using a recursion though it will be less efficient than the iterative version.
+
+```cpp
+Node* recurse(Node* head, Node* prev) {
+  if (head == nullptr) return prev;
+
+  // save next node
+  Node* next = head->next;
+
+  // connect current to the previous node
+  head->next = prev;
+
+  // go to next
+  return recurse(next, head);
+}
+
+Node* Reverse(Node *head) {
+  return recurse(head, nullptr);
+}
+```
