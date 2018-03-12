@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.158",
+    "gatsby": "^1.9.231",
     "gatsby-link": "^1.6.34",
     "gatsby-plugin-react-helmet": "^2.0.3",
-    "react-adsense": "^0.0.3",
+    "react-adsense": "^0.0.4",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
@@ -70,7 +70,7 @@
     "react-disqus-comments": "^1.1.1",
     "react-test-renderer": "15.6.1",
     "regenerator-runtime": "^0.11.1",
-    "ts-node": "^4.1.0",
+    "ts-node": "^5.0.1",
     "typography-theme-bootstrap": "^0.16.7"
   }
 }
