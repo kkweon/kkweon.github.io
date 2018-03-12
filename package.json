@@ -24,7 +24,6 @@
     "gatsby-source-filesystem": "^1.5.15",
     "gatsby-transformer-remark": "^1.7.30",
     "glamorous": "^4.11.4",
-    "prismjs": "^1.12.2",
     "react-adsense": "^0.0.4",
     "react-disqus-comments": "^1.1.1",
     "react-helmet": "^5.2.0",
