@@ -1,21 +1,17 @@
 /**
  * @fileOverview Layout of the webpage
-   @warning Do not change this file to tsx
- * @name index.jsx
- * @author Mo Kweon
- * @license MIT
  */
-import React from "react";
+import * as React from "react";
 import AdSense from "react-adsense";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Meta from "../components/Meta";
-import Footer from "../components/Footer";
 import "./index.scss";
 
 // syntax highlighting
 import "prismjs/themes/prism-okaidia.css";
 
-export default function({ children }) {
+export default function({ children }: { children: any }) {
   return (
     <div>
       <Meta
