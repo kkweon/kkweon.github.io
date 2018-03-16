@@ -5,23 +5,34 @@
   }
 
   h2 {
-    border-bottom: .15rem solid $color-black;
-    padding-bottom: .5rem;
+    border-bottom: 0.15rem solid $color-black;
+    padding-bottom: 0.5rem;
   }
 }
 
+// code content
+.gatsby-highlight {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    font-family: "D2 coding Ligature";
+    font-size: 1em;
+  }
+}
 
-p>code,
-li>code {
+code {
+  font-family: "D2 coding Ligature";
+}
+
+p > code,
+li > code {
   border: 1px solid $color-black;
   color: $color-red;
-  padding: .1rem .3rem;
+  padding: 0.1rem 0.3rem;
 }
 
 .gatsby-highlight {
   margin-bottom: 1.5rem;
 }
-
 
 blockquote {
   border-left: 10px solid $color-primary;
@@ -42,7 +53,6 @@ blockquote {
     margin-left: 2rem;
   }
 }
-
 
 .footnotes {
   p {
