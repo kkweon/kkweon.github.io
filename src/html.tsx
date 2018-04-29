@@ -20,7 +20,7 @@ interface IHtmlProps {
 }
 
 module.exports = class HTML extends React.Component<IHtmlProps, void> {
-  render() {
+  public render() {
     let css;
     if (process.env.NODE_ENV === `production`) {
       css = (

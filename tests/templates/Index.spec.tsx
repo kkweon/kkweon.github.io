@@ -1,11 +1,7 @@
-import * as React from "react";
-import Index, {
-  IData,
-  IPathContext,
-  IPostNode,
-} from "../../src/templates/Index";
-import { shallow } from "enzyme";
 import { expect } from "chai";
+import { shallow } from "enzyme";
+import * as React from "react";
+import Index, { IData, IPathContext } from "../../src/templates/Index";
 
 const pathContext: IPathContext = {
   group: [
