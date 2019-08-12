@@ -1,56 +1,46 @@
-import * as React from "react";
-import Link from "gatsby-link";
-import { rhythm } from "../../utils/typography";
-import { css, keyframes } from "glamor";
-import glamorous from "glamorous";
-
-const slideDownFadeIn = keyframes({
-  "100%": {
-    opacity: 1,
-    transform: "translatey(0)",
-  },
-});
+import * as React from 'react'
+import { rhythm } from '../../utils'
+import { css } from 'glamor'
+import glamorous from 'glamorous'
+import { Link } from 'gatsby'
 
 const Nav = glamorous.div({
   marginBottom: rhythm(1),
-  animation: `1s ${slideDownFadeIn} .3s forwards`,
-  opacity: 0,
-  transform: `translatey(-20px)`,
-});
+})
 
 const Ul = glamorous.ul({
-  display: "flex",
+  display: 'flex',
   padding: `${rhythm(1)} ${rhythm(0.7)} ${rhythm(0.5)}`,
-  listStyle: "none",
-});
+  listStyle: 'none',
+})
 
 const noMarginBottom = css({
   marginBottom: 0,
-});
+})
 const marginLeftAuto = css({
-  marginLeft: "auto",
-});
+  marginLeft: 'auto',
+})
 
 const marginLeft1R = css({
   marginLeft: rhythm(1),
-});
+})
 
 const smallScreenDisplayNone = css({
-  "@media screen and (max-width: 600px)": {
-    display: "none",
+  '@media screen and (max-width: 600px)': {
+    display: 'none',
   },
-});
+})
 const smallScreenDisplayInline = css({
-  display: "none",
-  "@media screen and (max-width: 600px)": {
-    display: "inline-block",
+  display: 'none',
+  '@media screen and (max-width: 600px)': {
+    display: 'inline-block',
   },
-});
+})
 
 const Header = () => (
   <Nav>
     <Ul className="container">
-      {" "}
+      {' '}
       <li {...smallScreenDisplayInline}>
         <h2 {...noMarginBottom}>
           <Link to="/" className="nav-link">
@@ -70,7 +60,7 @@ const Header = () => (
           <Link
             to="/about"
             className="nav-link"
-            activeStyle={{ color: "grey" }}
+            activeStyle={{ color: 'grey' }}
           >
             About
           </Link>
@@ -89,6 +79,6 @@ const Header = () => (
       </li>
     </Ul>
   </Nav>
-);
+)
 
-export default Header;
+export default Header

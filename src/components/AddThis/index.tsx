@@ -1,43 +1,43 @@
-import * as React from "react";
+import * as React from 'react'
 
-declare var window: any;
+declare var window: any
 
 interface IProps {
-  slug: string;
-  title: string;
-  description: string;
+  slug: string
+  title: string
+  description: string
 }
 
 class AddThis extends React.Component<IProps> {
   componentWillMount() {
     // Check if there is `document`
 
-    if (typeof window !== "undefined") {
-      const script = document.createElement("script");
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script')
 
-      script.id = "addthis";
+      script.id = 'addthis'
       script.src =
-        "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5932152d13edaf2f";
-      script.async = true;
+        'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5932152d13edaf2f'
+      script.async = true
       script.onload = () => {
-        window.addthis.init();
-        window.addEventListener("load", () => {
-          window.addthis.layers.refresh();
-        });
-      };
+        window.addthis.init()
+        window.addEventListener('load', () => {
+          window.addthis.layers.refresh()
+        })
+      }
 
-      document.body.appendChild(script);
+      document.body.appendChild(script)
     }
   }
 
   componentDidMount() {
-    if (window["addthis"]["layers"] && window.addthis.layers.refresh)
-      window.addthis.layers.refresh();
+    if (window['addthis']['layers'] && window.addthis.layers.refresh)
+      window.addthis.layers.refresh()
   }
 
   componentWillUnmount() {
-    const node = document.querySelector("#addthis");
-    if (node) document.body.removeChild(node);
+    const node = document.querySelector('#addthis')
+    if (node) document.body.removeChild(node)
   }
 
   render() {
@@ -45,13 +45,13 @@ class AddThis extends React.Component<IProps> {
       <div>
         <div
           className="addthis_inline_share_toolbox"
-          data-url={process.env.SITEURL + "/" + this.props.slug}
+          data-url={process.env.SITEURL + '/' + this.props.slug}
           data-title={this.props.title}
           data-description={this.props.description}
         />
       </div>
-    );
+    )
   }
 }
 
-export default AddThis;
+export default AddThis

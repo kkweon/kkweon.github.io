@@ -1,19 +1,19 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
     title: "Mo's Notes",
-    siteUrl: "https://kkweon.github.io",
+    siteUrl: 'https://kkweon.github.io',
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-glamor",
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-glamor',
     {
-      resolve: "gatsby-plugin-typescript",
+      resolve: 'gatsby-plugin-typescript',
       options: {
         transpileOnly: false, // default
         compilerOptions: {
-          target: "ESNEXT",
+          target: 'ESNEXT',
           experimentalDecorators: true,
           jsx: `react`,
         }, // default
@@ -25,48 +25,48 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-69116729-1",
+        trackingId: 'UA-69116729-1',
         // Setting this parameter is optional
         anonymize: false,
       },
     },
     {
-      resolve: "gatsby-plugin-sass",
+      resolve: 'gatsby-plugin-sass',
       options: {
         precision: 8,
       },
     },
     {
-      resolve: "gatsby-plugin-typography",
+      resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: "src/utils/typography",
+        pathToConfigModule: 'src/utils',
       },
     },
 
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        path: path.resolve(__dirname, "src", "posts"),
-        name: "blog posts",
+        path: path.resolve(__dirname, 'src', 'posts'),
+        name: 'blog posts',
       },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 590,
             },
           },
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-responsive-iframe",
-          "gatsby-remark-katex",
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-responsive-iframe',
+          'gatsby-remark-katex',
           {
-            resolve: "gatsby-remark-prismjs",
+            resolve: 'gatsby-remark-prismjs',
             options: {
-              classPrefix: "language-",
+              classPrefix: 'language-',
             },
           },
         ],

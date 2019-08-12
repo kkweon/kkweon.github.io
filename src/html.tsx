@@ -1,35 +1,17 @@
-import * as React from "react";
-
-let stylesStr: string;
-if (process.env.NODE_ENV === `production`) {
-  try {
-    stylesStr = require(`!raw-loader!../public/styles.css`);
-  } catch (e) {
-    console.log(e);
-  }
-}
+import * as React from 'react'
 
 interface IHtmlProps {
-  body: any;
-  postBodyComponents: any;
-  headComponents: any;
+  body: any
+  postBodyComponents: any
+  headComponents: any
 
-  htmlAttributes: any;
-  bodyAttributes: any;
-  preBodyComponents: any;
+  htmlAttributes: any
+  bodyAttributes: any
+  preBodyComponents: any
 }
 
-module.exports = class HTML extends React.Component<IHtmlProps, void> {
+export default class HTML extends React.Component<IHtmlProps, void> {
   public render() {
-    let css;
-    if (process.env.NODE_ENV === `production`) {
-      css = (
-        <style
-          id="gatsby-inlined-css"
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
-        />
-      );
-    }
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -44,7 +26,6 @@ module.exports = class HTML extends React.Component<IHtmlProps, void> {
             src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
           />
           {this.props.headComponents}
-          {css}
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
@@ -56,6 +37,6 @@ module.exports = class HTML extends React.Component<IHtmlProps, void> {
           {this.props.postBodyComponents}
         </body>
       </html>
-    );
+    )
   }
-};
+}

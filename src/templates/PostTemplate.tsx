@@ -1,63 +1,72 @@
-import * as React from "react";
-import Disqus from "../components/Disqus";
-import Meta from "../components/Meta";
-import AddThis from "../components/AddThis";
-import "katex/dist/katex.min.css";
+import * as React from 'react'
+import Disqus from '../components/Disqus'
+import Meta from '../components/Meta'
+import AddThis from '../components/AddThis'
+import 'katex/dist/katex.min.css'
+import { graphql } from 'gatsby'
+import Layout from '../components'
 
 interface IBlogPost {
   data: {
     markdownRemark: {
       frontmatter: {
-        title: string;
-        date: string;
-        keywords: string;
-        description: string;
-      };
+        title: string
+        date: string
+        keywords: string
+        description: string
+      }
 
-      html: string;
+      html: string
       fields: {
-        slug: string;
-      };
+        slug: string
+      }
 
-      excerpt: string;
-    };
-  };
+      excerpt: string
+    }
+  }
 }
 
 export default function Template({ data }: IBlogPost) {
-  const { frontmatter, html, fields: { slug }, excerpt } = data.markdownRemark;
+  const {
+    frontmatter,
+    html,
+    fields: { slug },
+    excerpt,
+  } = data.markdownRemark
 
-  const description = frontmatter.description || excerpt;
+  const description = frontmatter.description || excerpt
 
   return (
-    <section className="post-container">
-      <Meta
-        title={frontmatter.title}
-        date={frontmatter.date}
-        description={description}
-        tags={frontmatter.keywords}
-      />
-      <article className="post">
-        <header className="post__header">
-          <h2>{frontmatter.title}</h2>
-          <p>
-            <time>{frontmatter.date}</time>
-          </p>
-        </header>
-        <main
-          className="post__body"
-          dangerouslySetInnerHTML={{ __html: html }}
+    <Layout>
+      <section className="post-container">
+        <Meta
+          title={frontmatter.title}
+          date={frontmatter.date}
+          description={description}
+          tags={frontmatter.keywords}
         />
-      </article>
+        <article className="post">
+          <header className="post__header">
+            <h2>{frontmatter.title}</h2>
+            <p>
+              <time>{frontmatter.date}</time>
+            </p>
+          </header>
+          <main
+            className="post__body"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </article>
 
-      <AddThis
-        slug={slug}
-        title={frontmatter.title}
-        description={description}
-      />
-      <Disqus identifier={slug} />
-    </section>
-  );
+        <AddThis
+          slug={slug}
+          title={frontmatter.title}
+          description={description}
+        />
+        <Disqus identifier={slug} />
+      </section>
+    </Layout>
+  )
 }
 
 export const pageQuery = graphql`
@@ -76,4 +85,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

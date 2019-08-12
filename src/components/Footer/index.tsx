@@ -1,26 +1,26 @@
-import * as React from "react";
-import { rhythm } from "../../utils/typography";
-import { css } from "glamor";
+import * as React from 'react'
+import { rhythm } from '../../utils'
+import { css } from 'glamor'
 
 export default function Footer() {
   const footerStyle = css({
-    backgroundColor: "#444",
-    color: "#fff",
-    minHeight: "15vh",
+    backgroundColor: '#444',
+    color: '#fff',
+    minHeight: '15vh',
     marginTop: rhythm(1.5),
     padding: `${rhythm(1.5)} 0`,
-  });
+  })
   const footerTextStyle = css({
     padding: `${rhythm(1)} 0 0`,
-    textAlign: "center",
-  });
+    textAlign: 'center',
+  })
 
   const iconListStyle = css({
-    display: "flex",
-    justifyContent: "space-around",
-    maxWidth: "200px",
-    margin: "0 auto",
-  });
+    display: 'flex',
+    justifyContent: 'space-around',
+    maxWidth: '200px',
+    margin: '0 auto',
+  })
   return (
     <div {...footerStyle}>
       <div className="container">
@@ -38,5 +38,5 @@ export default function Footer() {
         <p {...footerTextStyle}>© 2018 Kyung Mo Kweon. All rights reserved.</p>
       </div>
     </div>
-  );
+  )
 }

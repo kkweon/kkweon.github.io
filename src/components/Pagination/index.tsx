@@ -1,47 +1,44 @@
-import * as React from "react";
-import Link from "gatsby-link";
-import { rhythm } from "../../utils/typography";
-import {
-  PRIMARY_COLOR,
-  SECONDARY_COLOR,
-} from "../../utils/variables";
-import { css } from "glamor";
+import * as React from 'react'
+import Link from 'gatsby-link'
+import { rhythm } from '../../utils'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../utils/variables'
+import { css } from 'glamor'
 
 interface INavLinkProp {
-  test: boolean;
-  url: string;
-  text: string;
+  test: boolean
+  url: string
+  text: string
 }
 
 const NavLink = (props: INavLinkProp) => {
   if (!props.test) {
     const linkStyle = css({
-      color: "black",
+      color: 'black',
       backgroundColor: SECONDARY_COLOR,
       padding: rhythm(0.5),
-      textDecoration: "none",
+      textDecoration: 'none',
 
-      "&:hover": {
-        color: "white",
+      '&:hover': {
+        color: 'white',
         backgroundColor: PRIMARY_COLOR,
       },
-    });
+    })
     return (
       <Link {...linkStyle} to={props.url}>
-        {" "}
-        {props.text}{" "}
+        {' '}
+        {props.text}{' '}
       </Link>
-    );
+    )
   } else {
-    return <span> </span>;
+    return <span> </span>
   }
-};
+}
 
 interface IPagination {
-  first: boolean;
-  last: boolean;
-  previousUrl: string;
-  nextUrl: string;
+  first: boolean
+  last: boolean
+  previousUrl: string
+  nextUrl: string
 }
 
 export default function Pagination({
@@ -51,10 +48,10 @@ export default function Pagination({
   nextUrl,
 }: IPagination) {
   const paginationStyle = css({
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
     marginTop: rhythm(2),
-  });
+  })
   return (
     <div {...paginationStyle} className="pagination">
       <div className="pagination__prev">
@@ -64,5 +61,5 @@ export default function Pagination({
         <NavLink test={last} url={nextUrl} text="Next Page" />
       </div>
     </div>
-  );
+  )
 }

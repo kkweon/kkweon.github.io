@@ -1,13 +1,13 @@
-import * as React from "react";
-import Helmet from "react-helmet";
+import * as React from 'react'
+import Helmet from 'react-helmet'
 
 interface IMetaProp {
-  title: string;
-  tags: string;
-  description: string;
-  date?: string;
-  modifiedDate?: string;
-  image?: string;
+  title: string
+  tags: string
+  description: string
+  date?: string
+  modifiedDate?: string
+  image?: string
 }
 
 export default function Meta({
@@ -48,5 +48,5 @@ export default function Meta({
       <meta name="article:tag" content={tags} />
       <meta name="article:modified_time" content={modifiedDate} />
     </Helmet>
-  );
+  )
 }

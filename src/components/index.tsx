@@ -1,15 +1,15 @@
 /**
  * @fileOverview Layout of the webpage
  */
-import * as React from "react";
-import AdSense from "react-adsense";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Meta from "../components/Meta";
-import "./index.scss";
+import * as React from 'react'
+import AdSense from 'react-adsense'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Meta from '../components/Meta'
+import './index.scss'
 
 // syntax highlighting
-import "prismjs/themes/prism-okaidia.css";
+import 'prismjs/themes/prism-okaidia.css'
 
 export default function({ children }: { children: any }) {
   return (
@@ -17,17 +17,17 @@ export default function({ children }: { children: any }) {
       <Meta
         title={process.env.SITETITLE || "Mo's notes"}
         description={process.env.SITEDESCRIPTION || "Mo's notes"}
-        tags={process.env.SITETAGS || "React"}
+        tags={process.env.SITETAGS || 'React'}
       />
       <Header />
       <div
         className="container"
         style={{
-          padding: "0 1.0875rem 1.45rem",
+          padding: '0 1.0875rem 1.45rem',
           paddingTop: 0,
         }}
       >
-        {children()}
+        {children}
       </div>
 
       <div className="container">
@@ -35,5 +35,5 @@ export default function({ children }: { children: any }) {
       </div>
       <Footer />
     </div>
-  );
+  )
 }
