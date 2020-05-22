@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: 'https://kkweon.github.io',
   },
   plugins: [
+    'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-glamor',
     {
@@ -73,4 +74,4 @@ module.exports = {
       },
     },
   ],
-};
+}
