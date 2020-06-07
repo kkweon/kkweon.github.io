@@ -68,7 +68,7 @@ const Post = ({ slug, title, date, excerpt }: IPost) => {
       <h3 {...titleStyle}>{title}</h3>
       <p {...dateStyle}>{date}</p>
       <p>{excerpt}</p>
-      <ReadMoreBtn to={slug} />
+      <ReadMoreBtn to={'/' + slug} />
     </PostLink>
   )
 }

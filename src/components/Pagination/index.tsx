@@ -55,10 +55,10 @@ export default function Pagination({
   return (
     <div {...paginationStyle} className="pagination">
       <div className="pagination__prev">
-        <NavLink test={first} url={previousUrl} text="Prev Page" />
+        <NavLink test={first} url={'/' + previousUrl} text="Prev Page" />
       </div>
       <div className="pagination__next">
-        <NavLink test={last} url={nextUrl} text="Next Page" />
+        <NavLink test={last} url={'/' + nextUrl} text="Next Page" />
       </div>
     </div>
   )

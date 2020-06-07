@@ -17,14 +17,7 @@ const buttonStyle = css({
 
 export const BackButton = () => (
   <div>
-    <Link
-      to="/"
-      {...buttonStyle}
-      onClick={(e) => {
-        e.preventDefault()
-        window.history.back()
-      }}
-    >
+    <Link to="/" {...buttonStyle}>
       <i
         style={{ marginRight: rhythm(0.5) }}
         className="fa fa-backward"
