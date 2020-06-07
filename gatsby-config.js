@@ -12,12 +12,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
-        transpileOnly: false, // default
-        compilerOptions: {
-          target: 'ESNEXT',
-          experimentalDecorators: true,
-          jsx: `react`,
-        }, // default
+        isTSX: true,
+        jsxPragma: `jsx`,
+        allExtensions: true,
       },
     },
     {

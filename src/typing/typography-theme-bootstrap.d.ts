@@ -1,4 +1,5 @@
 declare module 'typography-theme-bootstrap' {
-  const theme: IOptionsType
+  import { TypographyOptions } from 'typography'
+  const theme: TypographyOptions
   export default theme
 }
