@@ -1,10 +1,11 @@
-import * as React from 'react'
+import React from 'react'
 import Disqus from '../components/Disqus'
 import Meta from '../components/Meta'
 import AddThis from '../components/AddThis'
 import 'katex/dist/katex.min.css'
 import { graphql } from 'gatsby'
 import Layout from '../components'
+import { BackButton } from '../components/Buttons/BackButton'
 
 interface IBlogPost {
   data: {
@@ -38,6 +39,7 @@ export default function Template({ data }: IBlogPost) {
 
   return (
     <Layout>
+      <BackButton />
       <section className="post-container">
         <Meta
           title={frontmatter.title}
