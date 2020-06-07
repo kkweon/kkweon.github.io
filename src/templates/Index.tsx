@@ -102,7 +102,7 @@ export interface IData {
   pathContext: IPathContext
 }
 
-export default function({ pathContext }: IData) {
+export default function ({ pathContext }: IData) {
   const { group, index, first, last } = pathContext
   const previousUrl = index - 1 == 1 ? '' : (index - 1).toString()
   const nextUrl = (index + 1).toString()

@@ -47,7 +47,7 @@
     "build:CNAME": "cp CNAME public/CNAME",
     "serve": "gatsby serve",
     "develop": "gatsby develop",
-    "format": "prettier --trailing-comma all --no-semi --single-quote --write \"src/**/*.{js,ts,tsx,jsx,scss,css}\" \"tests/**/*.{ts,tsx,js,jsx}\" \"__mocks__/**/*.{js,ts}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,tsx,jsx,scss,css}\" \"tests/**/*.{ts,tsx,js,jsx}\" \"__mocks__/**/*.{js,ts}\"",
     "clean": "rm -rf public .cache && jest --clearCache",
     "github": "yarn build && ghp-import -f -p -b master public/",
     "test": "jest"

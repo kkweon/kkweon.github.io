@@ -2,6 +2,10 @@ import * as React from 'react'
 import { rhythm } from '../../utils'
 import { css } from 'glamor'
 
+export function getCurrentYear(): number {
+  return new Date().getFullYear()
+}
+
 export default function Footer() {
   const footerStyle = css({
     backgroundColor: '#444',
@@ -35,7 +39,9 @@ export default function Footer() {
             <i className="fa fa-envelope-square fa-2x social-icon" />
           </a>
         </div>
-        <p {...footerTextStyle}>© 2018 Kyung Mo Kweon. All rights reserved.</p>
+        <p {...footerTextStyle}>
+          © {getCurrentYear()} Mo Kweon. All rights reserved.
+        </p>
       </div>
     </div>
   )

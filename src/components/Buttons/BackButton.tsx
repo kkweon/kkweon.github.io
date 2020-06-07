@@ -19,7 +19,7 @@ export const BackButton = () => (
     <Link
       to="/"
       {...buttonStyle}
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault()
         window.history.back()
       }}
