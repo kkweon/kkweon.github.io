@@ -2,7 +2,6 @@
  * @fileOverview Layout of the webpage
  */
 import React from 'react'
-import AdSense from 'react-adsense'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Meta from '../components/Meta'
@@ -28,10 +27,6 @@ export default function ({ children }: { children: any }) {
         }}
       >
         {children}
-      </div>
-
-      <div className="container">
-        <AdSense.Google client="ca-pub-2420244930131504" slot="8479628001" />
       </div>
       <Footer />
     </div>
