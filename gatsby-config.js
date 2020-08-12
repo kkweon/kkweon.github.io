@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   siteMetadata: {
     title: "Mo's Notes",
-    siteUrl: 'https://kkweon.github.io',
+    siteUrl: 'https://kkweon.dev',
   },
   plugins: [
     'gatsby-plugin-sharp',
