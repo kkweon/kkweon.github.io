@@ -22,6 +22,10 @@ export default class HTML extends React.Component<IHtmlProps, void> {
             content="qkC75RnsheKNWwHlXFRM0UoSTIq5Tm230sYmIKUCS2E"
           />
           <meta
+            name="naver-site-verification"
+            content="2940df2084492807092ef910b250ecf3a90a679f"
+          />
+          <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
