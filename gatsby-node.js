@@ -4,9 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require('path');
-const {createFilePath} = require('gatsby-source-filesystem');
-const createPaginatedPages = require('gatsby-paginate');
+const path = require('path')
+const { createFilePath } = require('gatsby-source-filesystem')
+const createPaginatedPages = require('gatsby-paginate')
 
 function slugify(text) {
   return text
@@ -16,28 +16,28 @@ function slugify(text) {
     .replace(/[^\w\-]+/g, '') // Remove all non-word chars
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
+    .replace(/-+$/, '') // Trim - from end of text
 }
 
-exports.onCreateNode = ({node, getNode, actions}) => {
-  const {createNodeField} = actions;
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
-    const slug = node.frontmatter.slug || node.frontmatter.title;
+    const slug = node.frontmatter.slug || node.frontmatter.title
     createNodeField({
       node,
       name: 'slug',
       value: 'posts/' + slugify(slug),
-    });
+    })
   }
-};
+}
 
-exports.createPages = ({graphql, actions}) => {
-  const {createPage} = actions;
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               id
@@ -54,7 +54,7 @@ exports.createPages = ({graphql, actions}) => {
         }
       }
     `)
-      .then(result => {
+      .then((result) => {
         createPaginatedPages({
           edges: result.data.allMarkdownRemark.edges,
           createPage: createPage,
@@ -62,8 +62,8 @@ exports.createPages = ({graphql, actions}) => {
           pageLength: 5,
           pathPrefix: '',
           context: {},
-        });
-        result.data.allMarkdownRemark.edges.forEach(({node}) => {
+        })
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           createPage({
             path: node.fields.slug,
             component: path.resolve(
@@ -75,14 +75,14 @@ exports.createPages = ({graphql, actions}) => {
             context: {
               slug: node.fields.slug,
             },
-          });
-        });
-        resolve();
+          })
+        })
+        resolve()
       })
-      .catch(error => {
-        console.error('=====================');
-        console.error(error);
-        console.error('=====================');
-      });
-  });
-};
+      .catch((error) => {
+        console.error('=====================')
+        console.error(error)
+        console.error('=====================')
+      })
+  })
+}

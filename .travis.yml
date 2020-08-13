@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "lts/*"
+  - 'lts/*'
 
 install:
   - yarn
@@ -12,7 +12,7 @@ script:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  github-token: $GITHUB_TOKEN # Set in travis-ci.org dashboard, marked secure
   local-dir: public
   target-branch: master
   keep-history: false
