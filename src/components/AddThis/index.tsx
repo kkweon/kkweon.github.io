@@ -13,20 +13,16 @@ class AddThis extends React.Component<IProps> {
     // Check if there is `document`
 
     if (typeof window !== 'undefined') {
-      const script = document.createElement('script')
+      this.getAddthisGoogleAnalyticsScript()
+      document.body.appendChild(this.getAddthisScript())
+    }
+  }
 
-      script.id = 'addthis'
-      script.src =
-        'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5932152d13edaf2f'
-      script.async = true
-      script.onload = () => {
-        window.addthis.init()
-        window.addEventListener('load', () => {
-          window.addthis.layers.refresh()
-        })
-      }
-
-      document.body.appendChild(script)
+  // See https://www.addthis.com/academy/integrating-with-google-analytics/
+  getAddthisGoogleAnalyticsScript() {
+    window.addthis_config = {
+      data_ga_property: 'UA-69116729-1',
+      data_ga_social: true,
     }
   }
 
@@ -38,6 +34,23 @@ class AddThis extends React.Component<IProps> {
   componentWillUnmount() {
     const node = document.querySelector('#addthis')
     if (node) document.body.removeChild(node)
+  }
+
+  getAddthisScript(): HTMLScriptElement {
+    const script = document.createElement('script')
+
+    script.id = 'addthis'
+    script.src =
+      'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5932152d13edaf2f'
+    script.async = true
+    script.onload = () => {
+      window.addthis.init()
+      window.addEventListener('load', () => {
+        window.addthis.layers.refresh()
+      })
+    }
+
+    return script
   }
 
   render() {
