@@ -58,9 +58,9 @@ const Header = () => (
       <li {...noMarginBottom} {...marginLeftAuto}>
         <h2 {...noMarginBottom}>
           <Link
-            to="/about"
+            to="/about/"
             className="nav-link"
-            activeStyle={{ color: 'grey' }}
+            activeClassName="nav-link--active"
           >
             About
           </Link>

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import Layout from '../components'
 
 export default function About() {
@@ -6,16 +6,15 @@ export default function About() {
     <Layout>
       <div>
         <h2>About</h2>
-        <p>My interests includes but not limited to</p>
+        <p>My interests include the following but not limited to</p>
         <ul>
           <li>Machine Learning</li>
-          <li>Python</li>
-          <li>C++</li>
+          <li>Microservice</li>
           <li>Web Development</li>
+          <li>Kubernetes</li>
         </ul>
 
         <p>
-          {' '}
           This is a blog where I write down something I need to remember for
           future reference
         </p>

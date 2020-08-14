@@ -1,7 +1,7 @@
-import * as React from 'react'
+import React from 'react'
 import Link from 'gatsby-link'
 import Pagination from '../components/Pagination'
-import { css, keyframes } from 'glamor'
+import { css } from 'glamor'
 import glamorous from 'glamorous'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../utils/variables'
 import Layout from '../components'
@@ -9,21 +9,11 @@ import Typography from '../utils'
 
 const rhythm = Typography.rhythm
 
-const SlideFadeIn = keyframes({
-  '100%': {
-    opacity: 1,
-    transform: 'translateX(0)',
-  },
-})
-
 const PostLink = glamorous.div({
   padding: rhythm(1),
   border: '1px solid black',
   marginBottom: rhythm(1),
   boxShadow: '0 3px 3px #696969',
-  opacity: 0,
-  animation: `1s ${SlideFadeIn} 0.1s forwards`,
-  transform: 'translateX(-50px)',
 })
 
 const ReadMoreBtn = ({ to }: { to: string }) => {

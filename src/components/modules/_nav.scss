@@ -6,3 +6,16 @@
     color: $color-primary;
   }
 }
+
+.nav-link--active {
+  cursor: default;
+  color: $color-primary;
+}
+
+.nav-link--active::before {
+  content: '[';
+}
+
+.nav-link--active::after {
+  content: ']';
+}

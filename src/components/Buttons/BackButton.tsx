@@ -9,10 +9,7 @@ const buttonStyle = css({
   display: 'inline-block',
   marginBottom: rhythm(1),
   cursor: 'pointer',
-
-  ':hover': {
-    color: PRIMARY_COLOR,
-  },
+  color: PRIMARY_COLOR,
 })
 
 export const BackButton = () => (
