@@ -1,11 +1,5 @@
 const path = require('path')
 
-const googleOptions = {
-  analyticsID: 'UA-69116729-1',
-  tagmanagerID: 'GTM-P5Q4LPN',
-  optimizeID: 'GTM-KZ96TKD',
-}
-
 module.exports = {
   siteMetadata: {
     title: "Mo's Notes",
@@ -26,23 +20,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
     },
-
     {
-      resolve: 'gatsby-plugin-google-marketing-platform',
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        includeInDevelopment: true,
-        dataLayer: {
-          gaPropertyId: googleOptions.analyticsID,
-        },
-        tagmanager: {
-          id: googleOptions.tagmanagerID,
-        },
-        optimize: {
-          id: googleOptions.optimizeID,
-        },
-        analytics: {
-          id: googleOptions.analyticsID,
-        },
+        id: 'GTM-P5Q4LPN',
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        //
+        // Defaults to null
+        defaultDataLayer: { platform: 'gatsby' },
       },
     },
     {
