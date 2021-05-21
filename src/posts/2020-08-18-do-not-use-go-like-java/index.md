@@ -1,5 +1,5 @@
 ---
-title: I have been using Go in the wrong way!
+title: Do not use Go like Java
 keywords: go, golang
 date: 2020-08-18T22:29:09-07:00
 ---
