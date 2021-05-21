@@ -54,7 +54,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `)
-      .then((result) => {
+      .then(result => {
         createPaginatedPages({
           edges: result.data.allMarkdownRemark.edges,
           createPage: createPage,
@@ -79,7 +79,7 @@ exports.createPages = ({ graphql, actions }) => {
         })
         resolve()
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('=====================')
         console.error(error)
         console.error('=====================')

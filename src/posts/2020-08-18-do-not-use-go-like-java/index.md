@@ -61,7 +61,7 @@ Now I have to refactor everywhere including the test files (e.g., `anotherservic
 
 Ok, so what should I have done is
 
-- producers should return a concret type
+- producers should return a concrete type.
 - define interface in the consumer and only define what is used.
 
 For example,

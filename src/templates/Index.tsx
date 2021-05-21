@@ -89,11 +89,11 @@ export interface IPathContext {
 
 export interface IData {
   data: IPostNode
-  pathContext: IPathContext
+  pageContext: IPathContext
 }
 
-export default function ({ pathContext }: IData) {
-  const { group, index, first, last } = pathContext
+export default function ({ pageContext }: IData) {
+  const { group, index, first, last } = pageContext
   const previousUrl = index - 1 == 1 ? '' : (index - 1).toString()
   const nextUrl = (index + 1).toString()
 

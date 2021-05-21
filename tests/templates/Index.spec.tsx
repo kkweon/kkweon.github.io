@@ -54,7 +54,7 @@ const pathContext: IPathContext = {
 }
 
 const data: IData = {
-  pathContext,
+  pageContext: pathContext,
   data: {
     node: {
       frontmatter: {
