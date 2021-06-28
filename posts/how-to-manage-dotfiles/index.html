@@ -21,7 +21,7 @@ I tend to forget from time to time. So, I am leaving it here</p>
 <h2>When initializing</h2>
 <p>This is the first step to manage your dotfiles. The idea is clever.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> init --bare <span class="token environment constant">$HOME</span>/.myconf
-<span class="token builtin class-name">alias</span> <span class="token assign-left variable">config</span><span class="token operator">=</span><span class="token string">'/usr/bin/git --git-dir=<span class="token environment constant">$HOME</span>/.myconf/ --work-tree=<span class="token environment constant">$HOME</span>'</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">config</span><span class="token operator">=</span><span class="token string">'/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'</span>
 config config status.showUntrackedFiles no</code></pre></div>
 <ol>
 <li>You initialize your home directory as a git repository.</li>
@@ -38,7 +38,7 @@ config push</code></pre></div>
 <h2>When installing on your new system</h2>
 <p>Make sure you push to your remote server. I used gitlab private.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone --bare <span class="token operator">&lt;</span>git-repo-url<span class="token operator">></span> <span class="token environment constant">$HOME</span>/.myconf
-<span class="token builtin class-name">alias</span> <span class="token assign-left variable">config</span><span class="token operator">=</span><span class="token string">'/usr/bin/git --git-dir=<span class="token environment constant">$HOME</span>/.myconf/ --work-tree=<span class="token environment constant">$HOME</span>'</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">config</span><span class="token operator">=</span><span class="token string">'/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'</span>
 config checkout</code></pre></div>
 <p>If there is already dotfiles (and there is), there will be conflicts at
 checkout step. So, move the current files to back up directories.</p></main></article><div><div class="addthis_inline_share_toolbox" data-url="https://kkweon.dev/posts/how-to-manage-dotfiles" data-title="How to manage dotfiles" data-description="A few years ago, I learned how to mange dotfiles from

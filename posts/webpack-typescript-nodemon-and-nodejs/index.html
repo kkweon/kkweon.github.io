@@ -30,7 +30,7 @@ It works great because if I am using typescript, it has to be compiled into Java
 <p>These tools are so powerful that I lost how to set up because there would be so many ways of doing it.
 For example, <code class="language-text">tsc</code> will compile <code class="language-text">**/*.ts</code> to <code class="language-text">./dist/**/*.js</code>. But what about HTML/CSS Files?</p>
 <p>If you let webpack do it, you have to be careful when using native node modules because the default webpack config will try to bundle as it would run on browsers. So, here is how I did it.</p>
-<p>It's same as normal ts project, but <code class="language-text">target: &quot;node&quot;</code> and <code class="language-text">file-loader</code> for HTML files, and then I import <code class="language-text">html</code> files in source file, such that it'll be copied during webpack build.</p>
+<p>It's same as normal ts project, but <code class="language-text">target: "node"</code> and <code class="language-text">file-loader</code> for HTML files, and then I import <code class="language-text">html</code> files in source file, such that it'll be copied during webpack build.</p>
 <p>Here's the entire <code class="language-text">webpack.config.ts</code> Note that I used <code class="language-text">.ts</code>.</p>
 <div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> path <span class="token keyword">from</span> <span class="token string">"path"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> webpack <span class="token keyword">from</span> <span class="token string">"webpack"</span><span class="token punctuation">;</span>
@@ -41,7 +41,7 @@ For example, <code class="language-text">tsc</code> will compile <code class="la
     server<span class="token operator">:</span> <span class="token string">"./src/index.ts"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  <span class="token keyword">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
     rules<span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
         test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.tsx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>

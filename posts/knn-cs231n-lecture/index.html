@@ -31,7 +31,7 @@ TestDatasets <span class="token operator">=</span> fileList<span class="token pu
 <span class="token keyword">print</span><span class="token punctuation">(</span>TrainDatasets<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>TestDatasets<span class="token punctuation">)</span></code></pre></div>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">./cifar-10-batches-py/batches.meta
-[&#39;./cifar-10-batches-py/data_batch_1&#39;, &#39;./cifar-10-batches-py/data_batch_2&#39;, &#39;./cifar-10-batches-py/data_batch_3&#39;, &#39;./cifar-10-batches-py/data_batch_4&#39;]
+['./cifar-10-batches-py/data_batch_1', './cifar-10-batches-py/data_batch_2', './cifar-10-batches-py/data_batch_3', './cifar-10-batches-py/data_batch_4']
 ./cifar-10-batches-py/test_batch</code></pre></div>
 <h1>Helper Functions</h1>
 <p>필요한 함수들</p>
@@ -73,7 +73,7 @@ Xte<span class="token punctuation">,</span> Yte <span class="token operator">=</
 i <span class="token operator">=</span> <span class="token number">100</span> <span class="token comment"># 이미지 확인해볼 index</span>
 view_img<span class="token punctuation">(</span>Xtr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
 get_object<span class="token punctuation">(</span>Ytr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">b&#39;ship&#39;</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">b'ship'</code></pre></div>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 254px; "
@@ -162,11 +162,11 @@ y_real <span class="token operator">=</span> Yte<span class="token punctuation">
 <span class="token keyword">for</span> y1<span class="token punctuation">,</span> y2 <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Predicted: {} \t\t\t Real: {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>get_object<span class="token punctuation">(</span>y1<span class="token punctuation">)</span><span class="token punctuation">,</span> get_object<span class="token punctuation">(</span>y2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 Accuracy<span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span></code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b&#39;cat&#39; 			 Real: b&#39;dog&#39;
-Predicted: b&#39;automobile&#39; 			 Real: b&#39;truck&#39;
-Predicted: b&#39;dog&#39; 			 Real: b&#39;bird&#39;
-Predicted: b&#39;deer&#39; 			 Real: b&#39;cat&#39;
-Predicted: b&#39;deer&#39; 			 Real: b&#39;bird&#39;
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b'cat' 			 Real: b'dog'
+Predicted: b'automobile' 			 Real: b'truck'
+Predicted: b'dog' 			 Real: b'bird'
+Predicted: b'deer' 			 Real: b'cat'
+Predicted: b'deer' 			 Real: b'bird'
 =================
 Accuracy: 0.0%
 =================
@@ -182,11 +182,11 @@ y_real <span class="token operator">=</span> Yte<span class="token punctuation">
 <span class="token keyword">for</span> y1<span class="token punctuation">,</span> y2 <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Predicted: {} \t\t\t Real: {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>get_object<span class="token punctuation">(</span>y1<span class="token punctuation">)</span><span class="token punctuation">,</span> get_object<span class="token punctuation">(</span>y2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 Accuracy<span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span></code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b&#39;dog&#39; 			 Real: b&#39;dog&#39;
-Predicted: b&#39;automobile&#39; 			 Real: b&#39;truck&#39;
-Predicted: b&#39;deer&#39; 			 Real: b&#39;bird&#39;
-Predicted: b&#39;frog&#39; 			 Real: b&#39;cat&#39;
-Predicted: b&#39;deer&#39; 			 Real: b&#39;bird&#39;
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b'dog' 			 Real: b'dog'
+Predicted: b'automobile' 			 Real: b'truck'
+Predicted: b'deer' 			 Real: b'bird'
+Predicted: b'frog' 			 Real: b'cat'
+Predicted: b'deer' 			 Real: b'bird'
 =================
 Accuracy: 20.0%
 =================
@@ -204,11 +204,11 @@ y_real <span class="token operator">=</span> Ytr<span class="token punctuation">
 <span class="token keyword">for</span> y1<span class="token punctuation">,</span> y2 <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Predicted: {} \t\t\t Real: {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>get_object<span class="token punctuation">(</span>y1<span class="token punctuation">)</span><span class="token punctuation">,</span> get_object<span class="token punctuation">(</span>y2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 Accuracy<span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span> <span class="token comment"># 항상 100%가 나와야 함</span></code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b&#39;bird&#39; 			 Real: b&#39;bird&#39;
-Predicted: b&#39;truck&#39; 			 Real: b&#39;truck&#39;
-Predicted: b&#39;frog&#39; 			 Real: b&#39;frog&#39;
-Predicted: b&#39;deer&#39; 			 Real: b&#39;deer&#39;
-Predicted: b&#39;frog&#39; 			 Real: b&#39;frog&#39;
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b'bird' 			 Real: b'bird'
+Predicted: b'truck' 			 Real: b'truck'
+Predicted: b'frog' 			 Real: b'frog'
+Predicted: b'deer' 			 Real: b'deer'
+Predicted: b'frog' 			 Real: b'frog'
 =================
 Accuracy: 100.0%
 =================
@@ -224,11 +224,11 @@ y_real <span class="token operator">=</span> Ytr<span class="token punctuation">
 <span class="token keyword">for</span> y1<span class="token punctuation">,</span> y2 <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Predicted: {} \t\t\t Real: {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>get_object<span class="token punctuation">(</span>y1<span class="token punctuation">)</span><span class="token punctuation">,</span> get_object<span class="token punctuation">(</span>y2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 Accuracy<span class="token punctuation">(</span>y_pred<span class="token punctuation">,</span> y_real<span class="token punctuation">)</span></code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b&#39;bird&#39; 			 Real: b&#39;bird&#39;
-Predicted: b&#39;truck&#39; 			 Real: b&#39;truck&#39;
-Predicted: b&#39;deer&#39; 			 Real: b&#39;frog&#39;
-Predicted: b&#39;cat&#39; 			 Real: b&#39;deer&#39;
-Predicted: b&#39;ship&#39; 			 Real: b&#39;frog&#39;
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Predicted: b'bird' 			 Real: b'bird'
+Predicted: b'truck' 			 Real: b'truck'
+Predicted: b'deer' 			 Real: b'frog'
+Predicted: b'cat' 			 Real: b'deer'
+Predicted: b'ship' 			 Real: b'frog'
 =================
 Accuracy: 40.0%
 =================

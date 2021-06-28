@@ -15,17 +15,17 @@
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">total 184
 drwxr-xr-x   2 root root 24576 Mar 13 11:40 .
 drwxr-xr-x 177 root root 12288 Mar 11 23:47 ..
-lrwxrwxrwx   1 root root    45 Apr 26  2017 ABORT.7.gz -&gt; /usr/share/postgresql/9.5/man/man7/ABORT.7.gz
-lrwxrwxrwx   1 root root    21 Mar 14  2017 aclocal -&gt; /usr/bin/aclocal-1.15
-lrwxrwxrwx   1 root root    37 Mar 14  2017 aclocal.1.gz -&gt; /usr/share/man/man1/aclocal-1.15.1.gz
-lrwxrwxrwx   1 root root    55 Apr 26  2017 ALTER_AGGREGATE.7.gz -&gt; /usr/share/postgresql/9.5/man/man7/ALTER_AGGREGATE.7.gz
-lrwxrwxrwx   1 root root    55 Apr 26  2017 ALTER_COLLATION.7.gz -&gt; /usr/share/postgresql/9.5/man/man7/ALTER_COLLATION.7.gz
-lrwxrwxrwx   1 root root    56 Apr 26  2017 ALTER_CONVERSION.7.gz -&gt; /usr/share/postgresql/9.5/man/man7/ALTER_CONVERSION.7.gz
-lrwxrwxrwx   1 root root    54 Apr 26  2017 ALTER_DATABASE.7.gz -&gt; /usr/share/postgresql/9.5/man/man7/ALTER_DATABASE.7.gz</code></pre></div>
+lrwxrwxrwx   1 root root    45 Apr 26  2017 ABORT.7.gz -> /usr/share/postgresql/9.5/man/man7/ABORT.7.gz
+lrwxrwxrwx   1 root root    21 Mar 14  2017 aclocal -> /usr/bin/aclocal-1.15
+lrwxrwxrwx   1 root root    37 Mar 14  2017 aclocal.1.gz -> /usr/share/man/man1/aclocal-1.15.1.gz
+lrwxrwxrwx   1 root root    55 Apr 26  2017 ALTER_AGGREGATE.7.gz -> /usr/share/postgresql/9.5/man/man7/ALTER_AGGREGATE.7.gz
+lrwxrwxrwx   1 root root    55 Apr 26  2017 ALTER_COLLATION.7.gz -> /usr/share/postgresql/9.5/man/man7/ALTER_COLLATION.7.gz
+lrwxrwxrwx   1 root root    56 Apr 26  2017 ALTER_CONVERSION.7.gz -> /usr/share/postgresql/9.5/man/man7/ALTER_CONVERSION.7.gz
+lrwxrwxrwx   1 root root    54 Apr 26  2017 ALTER_DATABASE.7.gz -> /usr/share/postgresql/9.5/man/man7/ALTER_DATABASE.7.gz</code></pre></div>
 <p>As you can see <code class="language-text">/etc/alternatives/</code> is a <strong>directory</strong> that contains symbolic links to a specific version of the program.</p>
 <p>For example,</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">ls</span> -al /etc/alternatives/clang</code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">lrwxrwxrwx 1 root root 16 Mar 13 11:22 /etc/alternatives/clang -&gt; /usr/bin/clang-7</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">lrwxrwxrwx 1 root root 16 Mar 13 11:22 /etc/alternatives/clang -> /usr/bin/clang-7</code></pre></div>
 <p>You can see that my <code class="language-text">clang</code> is pointing <code class="language-text">clang-7.0</code>. So, you just have to create a symbolic link inside <code class="language-text">alternatives</code> directory, and you will always use the right version.</p>
 <h2>How to update /etc/alternatives/?</h2>
 <p>Ubuntu also comes with <code class="language-text">update-alternatives</code> which is a helper utility to manage <code class="language-text">alternatives</code> symlinks.</p>
@@ -42,7 +42,7 @@ lrwxrwxrwx   1 root root    54 Apr 26  2017 ALTER_DATABASE.7.gz -&gt; /usr/share
   3            /usr/bin/gcc-6     30        manual mode
   4            /usr/bin/gcc-7     50        manual mode
 
-Press &lt;enter&gt; to keep the current choice[*], or type selection number:</code></pre></div>
+Press &lt;enter> to keep the current choice[*], or type selection number:</code></pre></div>
 <h3>How to add a different version?</h3>
 <p>If you install with <code class="language-text">apt-get</code>, it's likely you don't need to do anything. However, if you compile from source codes, this has to be done manually.</p>
 <p>It can be done easily by typing <code class="language-text">update-alternatives --install LINK NAME PATH PRIORITY</code>.</p>

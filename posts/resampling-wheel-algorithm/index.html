@@ -21,7 +21,7 @@ max_w = max(w)
 for i = [1, N]:
     beta = beta + U[0, 2*max_w]
 
-    while beta &gt; w[index]:
+    while beta > w[index]:
         beta = beta - w[index]
         index = (index + 1) % N
 
