@@ -5,6 +5,7 @@ keywords: python
 ---
 
 ## 필요 라이브러리 호출
+
 ```python
 import numpy as np
 import operator
@@ -14,11 +15,9 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 ```
 
-
 ```python
 CIFAR_DATASETS_PATH = "./cifar-10-batches-py/"
 ```
-
 
 ```python
 # CIFAR-10 Data 위치 찾음
@@ -42,10 +41,9 @@ print(TestDatasets)
     ['./cifar-10-batches-py/data_batch_1', './cifar-10-batches-py/data_batch_2', './cifar-10-batches-py/data_batch_3', './cifar-10-batches-py/data_batch_4']
     ./cifar-10-batches-py/test_batch
 
-
 # Helper Functions
-필요한 함수들
 
+필요한 함수들
 
 ```python
 def load_data(file):
@@ -75,7 +73,6 @@ def view_img(X):
     plt.imshow(X.reshape(3,32,32).transpose(1,2,0))
 ```
 
-
 ```python
 Xtr, Ytr = load_multiple_data(TrainDatasets)
 Xte, Yte = load_multiple_data([TestDatasets])
@@ -89,8 +86,6 @@ print(Xtr.shape, Ytr.shape, Xte.shape, Yte.shape)
 
     (40000, 3072) (40000,) (10000, 3072) (10000,)
 
-
-
 ```python
 ## sample 이미지 확인
 i = 100 # 이미지 확인해볼 index
@@ -98,19 +93,11 @@ view_img(Xtr[i])
 get_object(Ytr[i])
 ```
 
-
-
-
     b'ship'
-
-
-
 
 ![png](ship.png)
 
-
 ## (k)Nearest Neighbor 클래스 define
-
 
 ```python
 class NearestNeighbor(object):
@@ -159,7 +146,6 @@ class NearestNeighbor(object):
 
 #### Accuracy Test Function
 
-
 ```python
 def Accuracy(Y_pred, Y_real, verbose=True):
     acc = np.mean(Y_pred == Y_real)
@@ -170,7 +156,6 @@ def Accuracy(Y_pred, Y_real, verbose=True):
     return acc
 ```
 
-
 ```python
 nn = NearestNeighbor()
 nn.train(Xtr, Ytr)
@@ -178,11 +163,9 @@ nn.train(Xtr, Ytr)
 
 ## Test Data 10000개는 너무 오래걸려서 샘플로 테스트
 
-
 ```python
 randomChoices = np.random.choice(range(Xte.shape[0]), size = 5, replace=False)
 ```
-
 
 ```python
 y_pred = nn.predict(Xte[randomChoices])
@@ -207,10 +190,7 @@ Accuracy(y_pred, y_real)
 
     0.0
 
-
-
 ## KNN when K > 1
-
 
 ```python
 y_pred = nn.predict(Xte[randomChoices], k=5)
@@ -235,17 +215,13 @@ Accuracy(y_pred, y_real)
 
     0.20000000000000001
 
-
-
 ## Train Set에 대한 검증
 
 #### K = 1 일때 NN의 정확도는 항상 1이 나와야 한다
 
-
 ```python
 randomChoices = np.random.choice(range(Xtr.shape[0]), size = 5, replace=False)
 ```
-
 
 ```python
 y_pred = nn.predict(Xtr[randomChoices], k=1)
@@ -270,10 +246,7 @@ Accuracy(y_pred, y_real) # 항상 100%가 나와야 함
 
     1.0
 
-
-
 #### K = 5 일 때
-
 
 ```python
 y_pred = nn.predict(Xtr[randomChoices], k=100)
@@ -298,10 +271,7 @@ Accuracy(y_pred, y_real)
 
     0.40000000000000002
 
-
-
 ## Cross Validation
-
 
 ```python
 def Cross_Validations(X, Y, k_for_KNN, k_folds = 5):
@@ -334,11 +304,11 @@ def Cross_Validations(X, Y, k_for_KNN, k_folds = 5):
     return np.array(results), np.array(raw)
 ```
 
-
 ```python
 how_many_folds = 5
 results, raw = Cross_Validations(Xtr[:1000], Ytr[:1000], [1, 3, 5, 7, 10, 12, 14, 16, 18], k_folds=how_many_folds)
 ```
+
 ```python
 plt.plot(raw[:,0], raw[:, 1]*100, 'bo', label='each dot')
 plt.plot(results[:,0], results[:, 1]*100, 'r-', label='Average line')
@@ -350,5 +320,6 @@ plt.show()
 max_index = np.argmax(results[:,1])
 print("Max Accuracy of {:.1f}% when k = {}".format(results[max_index, 1]*100, results[max_index, 0]))
 ```
+
 ![png](kfold.png)
 Max Accuracy of 11.3% when k = 10.0

@@ -8,6 +8,7 @@ Particle Filter들을 P 분포에 대해서 Random Sampling 하는 알고리즘
 완전한 랜덤보다 X, Y와 비슷한 값을 준다
 
 ## Resampling Wheel Pseudocode
+
 ```
 index = U[1, N]
 beta = 0
@@ -23,8 +24,8 @@ for i = [1, N]:
     select p[index]
 ```
 
-
 ## Resample Wheel in Python
+
 ```python
 p3 = []
 

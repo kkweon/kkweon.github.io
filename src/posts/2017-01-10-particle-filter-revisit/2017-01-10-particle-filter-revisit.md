@@ -5,15 +5,14 @@ date: 2017-01-10
 
 There are many filters to localize a robot. Most common filters are
 
-
-|Filter          | Prop 1 | Prop 2 | Prop 3 |
-|----------------|--------|--------|--------|
-|Histogram Filter|Discrete|Multi Modal|Exponential|
-|Kalman Filter|Continuous|Uni Modal|Quadratic|
-|Particle Filter|Continuous|Multi Modal| Usually good|
-
+| Filter           | Prop 1     | Prop 2      | Prop 3       |
+| ---------------- | ---------- | ----------- | ------------ |
+| Histogram Filter | Discrete   | Multi Modal | Exponential  |
+| Kalman Filter    | Continuous | Uni Modal   | Quadratic    |
+| Particle Filter  | Continuous | Multi Modal | Usually good |
 
 ## How a Particle Filter work
+
 So how does it work? it works as its name (particle).
 
 1. Guess multiple position for a robot (like 1,000 random guesses of (x, y, direction))

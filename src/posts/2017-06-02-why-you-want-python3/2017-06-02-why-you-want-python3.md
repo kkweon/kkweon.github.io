@@ -5,7 +5,6 @@ date: 2017-06-02
 
 When I say Python 3, I am referring to Python 3.6 because Python 3.6 is the current latest version as of today. For Python2, of course I'm referring to Python 2.7.x (it's scheduled to discontinue by 2020). But, I'm not talking about the unicode support or integer division or print function difference because you should already know this.
 
-
 ## F-String
 
 In Python 3.6, a new feature called "F-string" was introduced.
@@ -16,7 +15,6 @@ today = "2017-06-02"
 print(f"{today} is a Friday!")
 ```
 
-
 ## Number Underscores
 
 Have you ever counted the number of digits in your code?
@@ -26,7 +24,6 @@ In Python3.6, an underscore is allowed to annotate a thousand seperator.
 one_million = 1_000_000
 one_billion = 1_000_000_000
 ```
-
 
 ## Variable Annotations
 
@@ -39,7 +36,6 @@ def add_integers(num1: int, num2: int):
 ```
 
 You can use `mypy your_python_file.py` to do a quick type-check as well.
-
 
 ## Science Community
 
@@ -56,14 +52,13 @@ If not, they have stopped adding new features in Python 2.
 
 Who cares? It's going to discontinue in 2020 anyway.
 
-* iPython
-* Jupyter Notebook
-* Pandas
-* Matplotlib
-* Sympy
-* CPython
-* and [More](http://www.python3statement.org/)
-
+- iPython
+- Jupyter Notebook
+- Pandas
+- Matplotlib
+- Sympy
+- CPython
+- and [More](http://www.python3statement.org/)
 
 ## Conclusion
 

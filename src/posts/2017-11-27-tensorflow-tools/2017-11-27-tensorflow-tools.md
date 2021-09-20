@@ -81,11 +81,12 @@ print(len(frozen_ops)) # 245
 For inference, it can be further optimized through [Optimize for Inference][optimize for inference]
 
 - Some operations are not necessary for inference
-    - For example, batch normalization can be removed after extracting mean and std
+  - For example, batch normalization can be removed after extracting mean and std
 - Many operations can be fused into one
-    - For example, 3 steps (CNN - BN - RELU) can be fused into one step (CNNBNRELU)
+  - For example, 3 steps (CNN - BN - RELU) can be fused into one step (CNNBNRELU)
 
 ### Usage
+
 ```bash
 bazel build tensorflow/python/tools:optimize_for_inference && \
 bazel-bin/tensorflow/python/tools/optimize_for_inference      \
@@ -97,6 +98,7 @@ bazel-bin/tensorflow/python/tools/optimize_for_inference      \
 ```
 
 ### Result
+
 Now the number of operation has reduced to 200.
 
 ```python
@@ -120,8 +122,8 @@ There are so much less data. Now it runs so much faster.
 For training, back propagation requires significant digits.
 For inference, it's not necessary since we are interested in the highest output (label) not the value itself.
 
-
 ### Usage
+
 ```bash
 bazel build tensorflow/tools/graph_transforms:transform_graph
 bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
@@ -146,6 +148,7 @@ print(len(optimized_ops)) # 425
 ```
 
 ## AOT & JIT
+
 Tensorflow supports AOT and JIT compilation.
 
 - AOT stands for "Ahead Of Time"
@@ -168,7 +171,6 @@ with tf.Session(config=config) as sess:
     ...
 ```
 
-
-[freezegraph]: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py "freeze graph"
-[optimize for inference]: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/optimize_for_inference.py "optimize inference"
+[freezegraph]: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py 'freeze graph'
+[optimize for inference]: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/optimize_for_inference.py 'optimize inference'
 [graph transform]: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/graph_transforms/README.md

@@ -26,8 +26,8 @@ date: 2017-05-24
 자기만 알아보는 자기만의 스타일을 유지하는 코드는 굉장히 나쁘다.
 완전 쓰레기로 짜놨더라도 자기는 잘 짠줄 알기 때문에 더 나쁘다. (경험자 ㅠㅠ)
 
-* Explicit over Implicit
-* Readability over Everything
+- Explicit over Implicit
+- Readability over Everything
 
 > **보이스카웃 룰이란?**
 > “always leave the campground cleaner than you found it.” 라는 말로 실제 보이스카웃 룰인데 코드를 checkout 할때마다 더 깨끗하게(?) 리팩토링후 commit을 하라는 얘기이다.
@@ -58,6 +58,7 @@ date: 2017-05-24
 PEP8의 몇가지 예시들은 다음과 같다
 
 모듈의 이름은 only 소문자
+
 ```python
 (good) import modulename
 (bad) import ModuleName
@@ -65,6 +66,7 @@ PEP8의 몇가지 예시들은 다음과 같다
 ```
 
 클래스는 CamelCase
+
 ```python
 (good) class CamelCase(object):
 (bad) class mixedCase(object):
@@ -76,6 +78,7 @@ PEP8의 몇가지 예시들은 다음과 같다
 전자가 new style 이고 후자가 old style인데 Python3에서는 old style이 없어졌다. (써도 전자 처럼 되지만 조금 달라서 전자로 explicit한 것이 좋음)
 
 함수의 이름은 snake_case
+
 ```python
 (good) def python_function_name(arg1, arg2):
 (bad) def PythonFunctionName(arg1, arg2):
@@ -91,11 +94,14 @@ PEP8과 거의 유사하다.
 PEP8과 비교해서 가장 다른 점은 “Docstring”을 작성하는 법에 대해 좀더 깊이 다루고 있다.
 
 예를 들면,
+
 ```python
 def add_two_numbers(number1, number2):
     return number1 + number2
 ```
+
 라는 함수가 있으면 아래와 같이 docstring을 작성한다.
+
 ```python
 def add_two_numbers(number1, number2):
     """Returns the sum of two numbers
@@ -108,6 +114,7 @@ def add_two_numbers(number1, number2):
         int: Sum of `number1` and `number2`
    """
 ```
+
 구글의 Docstring style은 보자마자, 무슨 타입의 인풋을 넣어줘야 되는 지, 결과값이 어떤 타입인지 바로 알 수 있다.
 
 코딩 코멘트의 경우 가장 좋은 코멘트는 죽은 코멘트…즉 코멘트를 작성하지 않고 Self Explanatory 한 코드를 작성하는 것이지만, Docstring은 코멘트와 달리 툴팁에 나오는 부분이기 때문에 거진 필수적으로 적어줘야 한다.
@@ -157,23 +164,23 @@ def discount_rewards(rewards, gamma=FLAGS.gamma):
 
 무슨 일을 하는 함수인가?
 
-* `discounted rewards`를 구하는 함수
+- `discounted rewards`를 구하는 함수
 
 인풋은 무엇을 받는가?
 
-* `(?,) shape`의 `np.ndarray`
-* `float` type의 `gamma`
+- `(?,) shape`의 `np.ndarray`
+- `float` type의 `gamma`
 
 결과값은 무엇인가?
 
-* `(?,) shape` 의 `np.ndarray` 인 것을 알 수 있다.
+- `(?,) shape` 의 `np.ndarray` 인 것을 알 수 있다.
 
 이 외에도 스타일을 따르면 좋은 점은 텐서플로우 공식홈페이지 같은 api guide 문서도 doxygen이나 스핑크스 등을 통해 저절로 만들어진다. api 가이드 문서 작업 일을 미리 한다고 생각하면 된다.
 
 아래 두개의 docstring을 어떻게 작성해야 되는지 여기서 다 언급할 수는 없지만 알아두는 것이 좋다.
 
-* 함수의 Docstring
-* Class의 Docstring
+- 함수의 Docstring
+- Class의 Docstring
 
 자주 쓰인다.
 
@@ -222,6 +229,6 @@ Numpy 좀 쓰셨다 싶으신 분들은 많이 눈에 익을 것이다.
 여기 나온 것 뿐만 아니라 lint에 대해서도 알면 좋지만 글이 길어져 이만 줄인다.
 짧게 쓰면 아래 세개는 다 사용할 줄 알아야 한다.
 
-* pylint
-* autopep8
-* autoflake
+- pylint
+- autopep8
+- autoflake

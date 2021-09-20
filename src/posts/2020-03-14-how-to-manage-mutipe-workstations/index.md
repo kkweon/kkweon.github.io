@@ -1,7 +1,7 @@
 ---
 title: How to manage multiple workstations using Ansible.
 keywords: Ansible
-date: "2020-03-14"
+date: '2020-03-14'
 ---
 
 ## Use Ansible
@@ -23,10 +23,10 @@ Ansible supports a declarative approach, meaning I define the desired state in a
 
 Here's an example of one of my playbook that does the following:
 
-  1. Run apt update & upgrade
-  1. Run prod server access (for my work)
-  1. Pull the latest dotfiles
-  1. Update neovim (my editor).
+1. Run apt update & upgrade
+1. Run prod server access (for my work)
+1. Pull the latest dotfiles
+1. Update neovim (my editor).
 
 ```yaml
 - hosts: all
@@ -42,7 +42,7 @@ Here's an example of one of my playbook that does the following:
       expect:
         command: prodaccess
         responses:
-          "SSO password for kkweon:": "{{ become_pass }}"
+          'SSO password for kkweon:': '{{ become_pass }}'
 
     - name: git pull dotfiles
       shell: |

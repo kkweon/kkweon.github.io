@@ -4,7 +4,6 @@ date: 2018-03-11T15:30:00
 keywords: Algorithm, C++
 ---
 
-
 ## Problem description
 
 The problem is the following
@@ -17,16 +16,13 @@ For example,
 - [1, 1, 2] should return 2
 - [0, 0, 1, 2, 1] should return 2
 
-
 ### Condition
 
 Every element in the array occurs exactly twice except for one unique element.
 
-
 ### HackerRank
 
 This problem can be solved in [HackerRank](https://www.hackerrank.com/challenges/ctci-lonely-integer/problem).
-
 
 ## Solution
 
@@ -57,7 +53,6 @@ For example, suppose array is [3, 1, 3]. That is [011, 001, 011] in binary.
 - 010 ^ 011 = 001
 
 Hence, we can find out that 001 is the number that did not appear twice otherwise it's been canceled out.
-
 
 In code,
 

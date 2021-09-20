@@ -69,10 +69,10 @@ If you install with `apt-get`, it's likely you don't need to do anything. Howeve
 
 It can be done easily by typing `update-alternatives --install LINK NAME PATH PRIORITY`.
 
--   **LINK:** means the default bin path. For example, /usr/bin/java, /usr/bin/gcc
--   **NAME:** refers to the name of program. It's usually the name of a bin file. e.g., gcc, clang, java.
--   **PATH:** means a path to the actual version of the program you wish to register. This will be usually a bin file with version name. For example, /usr/bin/gcc-6, /usr/bin/gcc-4.8.
--   **PRIORITY:** is an integer indicating how to choose a version when there are multiple versions and users did not set a specific version. The highest number will be chosen.
+- **LINK:** means the default bin path. For example, /usr/bin/java, /usr/bin/gcc
+- **NAME:** refers to the name of program. It's usually the name of a bin file. e.g., gcc, clang, java.
+- **PATH:** means a path to the actual version of the program you wish to register. This will be usually a bin file with version name. For example, /usr/bin/gcc-6, /usr/bin/gcc-4.8.
+- **PRIORITY:** is an integer indicating how to choose a version when there are multiple versions and users did not set a specific version. The highest number will be chosen.
 
 So, it will look like this
 
@@ -83,11 +83,13 @@ sudo update-alternatives --install /usr/bin/java java /usr/local/java/jre1.7.0_0
 ## In summary,
 
 ### Choose a different version
+
 ```bash
 sudo update-alternatives --config NAME
 ```
 
 ### Install a new version
+
 ```bash
 sudo update-alternatives --install LINK NAME PATH PRIORITY
 ```

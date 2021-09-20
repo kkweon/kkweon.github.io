@@ -20,7 +20,6 @@ date: 2018-03-17T13:38:38
 
 ![트리](https://he-s3.s3.amazonaws.com/media/uploads/fb14630.png)
 
-
 위 그림은 아래 string list를 저장한 Trie 이다.
 
 ```
@@ -30,15 +29,14 @@ date: 2018-03-17T13:38:38
 만약 "aba" 라는 사람이 존재하는지 검색하려면 모든 이름을 다 뒤져보지 않더라도 3번만에 바로 찾아 낼 수 있다.
 "staff" 라는 사람이 존재하는지 검색하려면 첫글자를 치자마자 존재하지 않는다는걸 알 수 있다.
 
-
 ## 구현 설명
 
-
 ### 구조
+
 일반적으로 트리 구조와 동일하다.
 
 - 글자 1개(char)를 저장하는 노드를 만든다
-- 루트 노드는 큰 의미가 없다. 그래서 보통 "*"와 같은 더미 데이터를 가진 노드가 루트가 된다.
+- 루트 노드는 큰 의미가 없다. 그래서 보통 "\*"와 같은 더미 데이터를 가진 노드가 루트가 된다.
 
 일반적인 Node 구조는 다음과 같다.
 
@@ -50,7 +48,6 @@ class TrieNode(object):
         self.terminal = terminal # type: bool 마지막 노드(단어의 마지막 글자)인지 나타낸다.
 ```
 
-
 ### 삽입
 
 "bed" 라는 단어를 추가한다고 해보자.
@@ -61,16 +58,13 @@ class TrieNode(object):
 
 ![bed-1](assets/bed-1.png)
 
-
 #### e가 있는지 살펴본다.
 
 ![bed-2](assets/bed-2.png)
 
-
 #### d가 있는지 살펴본다. 없으면 노드를 생성한다.
 
 ![bed-3](assets/bed-3.png)
-
 
 즉, $O(\text{\# of character})$ 로 삽입이 가능하다.
 
@@ -86,7 +80,6 @@ def insert(S: str, root: TrieNode) -> None:
 
         current = current.children[char]
 ```
-
 
 ### 탐색
 
@@ -109,7 +102,6 @@ def search(S: str, root: TrieNode) -> bool:
 
     return current.terminal
 ```
-
 
 ## 전체 코드
 

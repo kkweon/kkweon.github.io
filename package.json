@@ -47,7 +47,7 @@
     "serve": "gatsby serve",
     "develop": "gatsby develop",
     "start": "yarn develop",
-    "format": "prettier --write \"src/**/*.{js,ts,tsx,jsx,scss,css}\" \"tests/**/*.{ts,tsx,js,jsx}\" \"__mocks__/**/*.{js,ts}\" \"*.{js,ts,json,yaml,yml}\"",
+    "format": "prettier --write .",
     "clean": "rm -rf public .cache && jest --clearCache",
     "github": "yarn build && ghp-import -f -p -b master public/",
     "test": "jest"

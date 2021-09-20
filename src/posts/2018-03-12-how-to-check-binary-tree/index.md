@@ -4,7 +4,6 @@ date: 2018-03-12T23:51:03
 keywords: Algorithms, C++
 ---
 
-
 > Is This a Binary Search Tree?
 
 This problem can be solved in [HackerRank](https://www.hackerrank.com/challenges/is-binary-search-tree/problem).
@@ -17,15 +16,15 @@ No duplicate in the tree.
 
 First, we know the following conditions from the definitions of the BST.
 
--   a left child must be **less** than its parent
--   a right child must be **greater** than its parent
+- a left child must be **less** than its parent
+- a right child must be **greater** than its parent
 
 It sounds it can be simply checked using a recursion.
 
 However, there are two other conditions that must be checked as well.
 
--   We need to ensure that the **right most node** of the **left child** node must be less than its parent.
--   Similarly, we need to check the **left most node** of the **right child** node must be greater than its parent.
+- We need to ensure that the **right most node** of the **left child** node must be less than its parent.
+- Similarly, we need to check the **left most node** of the **right child** node must be greater than its parent.
 
 First, look at the following image. ![img](./Binary_search_tree.svg)
 

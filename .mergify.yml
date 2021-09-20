@@ -1,7 +1,7 @@
 pull_request_rules:
   - name: Automatic merge
     conditions:
-    - check-success=build-and-deploy
+      - check-success=build-and-deploy
     actions:
       merge:
         method: merge

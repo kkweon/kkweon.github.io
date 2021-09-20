@@ -46,7 +46,6 @@ let todoMap: TodoMap.t(int) = TodoMap.empty
 
 The type signature looks weird but that's how it is..
 
-
 ## Operations
 
 ### Add(Update)
@@ -93,7 +92,6 @@ And, the method is `TodoMap.bindings(mapInstance)` which returns `list((key, val
 TodoMap.bindings(todoMap)
 ```
 
-
 ### References
 
-* https://reasonml.github.io/api/Map.html
+- https://reasonml.github.io/api/Map.html

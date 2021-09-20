@@ -41,28 +41,28 @@ It's same as normal ts project, but `target: "node"` and `file-loader` for HTML 
 Here's the entire `webpack.config.ts` Note that I used `.ts`.
 
 ```typescript
-import * as path from "path";
-import * as webpack from "webpack";
+import * as path from 'path'
+import * as webpack from 'webpack'
 
 const config: webpack.Configuration = {
-  devtool: "source-map",
+  devtool: 'source-map',
   entry: {
-    server: "./src/index.ts",
+    server: './src/index.ts',
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "awesome-typescript-loader",
+        use: 'awesome-typescript-loader',
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              publicPath: "dist/",
+              publicPath: 'dist/',
             },
           },
         ],
@@ -71,22 +71,21 @@ const config: webpack.Configuration = {
   },
 
   output: {
-    filename: "[name].js",
-    path: path.join(__dirname, "dist/"),
+    filename: '[name].js',
+    path: path.join(__dirname, 'dist/'),
   },
 
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
-  target: "node",
-};
+  target: 'node',
+}
 
-export default config;
+export default config
 ```
 
 and then how to watch? After trying gulpfile, nodmeon.json, and ..., I settled down using the following NPM scripts.
 [npm-run-all](https://www.npmjs.com/package/npm-run-all) helps to run webpack and nodemon in parallel. Also it's cross-platform.
-
 
 ```json
 "scripts": {

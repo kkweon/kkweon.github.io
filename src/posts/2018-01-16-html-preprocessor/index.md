@@ -4,7 +4,8 @@ date: 2018-01-16
 ---
 
 ## What is Pug?
-Lately, I started using "[Pug](https://pugjs.org/api/getting-started.html)" HTML preprocessor. It allows to write a concise HTML. At first, I thought why the hell I would use this when there is [Emmet](https://emmet.io/ "Emmet"). But I was wrong. As soon as I started using it, it brings the joy of writing HTML.
+
+Lately, I started using "[Pug](https://pugjs.org/api/getting-started.html)" HTML preprocessor. It allows to write a concise HTML. At first, I thought why the hell I would use this when there is [Emmet](https://emmet.io/ 'Emmet'). But I was wrong. As soon as I started using it, it brings the joy of writing HTML.
 
 ## How to use
 
@@ -39,6 +40,7 @@ a(href="https://github.com/kkweon" target="_blank") GitHub
 ```
 
 ## Dealing with Whitespace
+
 One caveat is that if you don't want to use the inline tag as above, you have to use many ugly pipes(|) like below because **whitespace is not automatically generated**.
 
 ```pug

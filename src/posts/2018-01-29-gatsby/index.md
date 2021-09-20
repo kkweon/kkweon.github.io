@@ -4,21 +4,21 @@ date: 2018-01-29T11:43:40
 keywords: ReactJS, GatsbyJS, Blog
 ---
 
-I decided to migrate my current blog to [GatsbyJS](https://www.gatsbyjs.org/) (previously, I was using [Pelican](http://docs.getpelican.com/en/stable/ "Pelican")).
-
+I decided to migrate my current blog to [GatsbyJS](https://www.gatsbyjs.org/) (previously, I was using [Pelican](http://docs.getpelican.com/en/stable/ 'Pelican')).
 
 ## Why GatsbyJS
+
 Though Pelican was okay, I moved to [Gatsby](https://www.gatsbyjs.org/) due to the following reasons:
 
-
 ### [React](https://reactjs.org/)
+
 Gatsby uses React to generate static sites. So, I can build my blog using React components.
 For example, my post list is represented as a `PostLink`.
 
 ```jsx
 <PostLink className="post">
   <h3 css={{ marginBottom: rhythm(0.2) }}>{title}</h3>
-  <p css={{ color: "#999", marginBottom: rhythm(0.5) }}>{date}</p>
+  <p css={{ color: '#999', marginBottom: rhythm(0.5) }}>{date}</p>
   <p>{excerpt}</p>
   <ReadMoreBtn to={slug} />
 </PostLink>
@@ -27,7 +27,6 @@ For example, my post list is represented as a `PostLink`.
 ### JavaScript (NPM)
 
 I get to use lots of NPM packages. Though I can use NPM packages in Pelican, it wasn't clean because Pelican heavily relies on its plugins (pelican-plugins). Some packages were outdated.
-
 
 ### Fast Loading & SEO
 
@@ -74,13 +73,11 @@ export default function Meta({
       <meta name="article:tag" content={tags} />
       <meta name="article:modified_time" content={modifiedDate} />
     </Helmet>
-  );
+  )
 }
-
 ```
 
 and then I simply re use it just like any other React component.
-
 
 ```jsx
 <Meta
@@ -91,52 +88,48 @@ and then I simply re use it just like any other React component.
 />
 ```
 
-
 ## Caveats
 
 There are some caveats I didn't know before migrating into GatsbyJS.
-
 
 ### iOS Safari
 
 Currently, there is a bug in iOS Safari that swiping to previous page freezes the service worker ([source](https://github.com/gatsbyjs/gatsby/issues/2842)). Though it's not Gatsby's fault, it's really annoying.
 
-
 ### AddThis
 
 [AddThis](http://www.addthis.com/) helps to create/track social sharing buttons. However, they don't provide a plugin for React. Since there is no page-loading (using react-router), additional fixes were necessary. But, it looks ugly and there should be better ways of doing this.
-
 
 ```jsx
 class AddThis extends Component {
   componentWillMount() {
     // Check if there is `document`
 
-    if (typeof window !== "undefined") {
-      const script = document.createElement("script");
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script')
 
-      script.id = "addthis";
+      script.id = 'addthis'
       script.src =
-        "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5932152d13edaf2f";
-      script.async = true;
+        'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5932152d13edaf2f'
+      script.async = true
       script.onload = () => {
-        window.addthis.init();
-        window.addEventListener("load", () => {
-          window.addthis.layers.refresh();
-        });
-      };
+        window.addthis.init()
+        window.addEventListener('load', () => {
+          window.addthis.layers.refresh()
+        })
+      }
 
-      document.body.appendChild(script);
+      document.body.appendChild(script)
     }
   }
 
   componentDidMount() {
-    if (window["addthis"]["layers"] && window.addthis.layers.refresh)
-      window.addthis.layers.refresh();
+    if (window['addthis']['layers'] && window.addthis.layers.refresh)
+      window.addthis.layers.refresh()
   }
 
   componentWillUnmount() {
-    document.body.removeChild(document.querySelector("#addthis"));
+    document.body.removeChild(document.querySelector('#addthis'))
   }
 
   render() {
@@ -144,16 +137,15 @@ class AddThis extends Component {
       <div>
         <div
           className="addthis_inline_share_toolbox"
-          data-url={process.env.SITEURL + "/" + this.props.slug}
+          data-url={process.env.SITEURL + '/' + this.props.slug}
           data-title={this.props.title}
           data-description={this.props.description}
         />
       </div>
-    );
+    )
   }
 }
 ```
-
 
 ## Summary
 

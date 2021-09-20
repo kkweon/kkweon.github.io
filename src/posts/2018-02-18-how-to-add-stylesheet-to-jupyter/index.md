@@ -4,11 +4,11 @@ date: 2018-02-18T19:28:40
 keywords: CSS, Jupyter Notebook
 ---
 
-Although this method only works in [NBViewer](https://nbviewer.jupyter.org/ "NBViewer Website"), NBViewer is so much faster than GitHub rendering engine and it should be the standard way of publishing any notebook files.
+Although this method only works in [NBViewer](https://nbviewer.jupyter.org/ 'NBViewer Website'), NBViewer is so much faster than GitHub rendering engine and it should be the standard way of publishing any notebook files.
 
 ## Preview
 
-[Demo](https://nbviewer.jupyter.org/github/cynthia/pytudes/blob/CSS/ipynb/Cheryl.ipynb?flush_cache=true "Demo") is hosted at NBViewer.
+[Demo](https://nbviewer.jupyter.org/github/cynthia/pytudes/blob/CSS/ipynb/Cheryl.ipynb?flush_cache=true 'Demo') is hosted at NBViewer.
 or you can view the image.
 
 <img src="https://user-images.githubusercontent.com/2981167/36359589-9fcd4b86-14d1-11e8-929d-77f76149d6f1.png" alt="Preview Image" />
@@ -26,7 +26,6 @@ In Jupyter Notebook, you can embed any html using `%%HTML`. So, you can embed CS
 </style>
 ```
 
-
 ### Use stylesheets
 
 You can also embed `.css` files using `IPython.core.display.HTML` as below. It is important to run the cell such that the result is going to be embedded into the ipynb file.
@@ -41,7 +40,6 @@ def css_styling():
 
 css_styling()
 ```
-
 
 ## What style to add
 
@@ -117,6 +115,7 @@ pre {
   color: #Cd3700;
 }
 ```
+
 ## Embed JS
 
 You can also embed any JavaScript as well.
