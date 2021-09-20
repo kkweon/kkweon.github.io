@@ -35,19 +35,21 @@ There could be a mechanical error in steering.
 So, if the CTE does not decrease even after long period of time, there needs to be an adjustment in steering.
 So, we need the integral portion to the steering formula
 
-$$ \alpha = - \tau_p \* cte - \tau_i \sum cte $$
+$$
+\alpha = - \tau_p * cte - \tau_i \sum cte
+$$
 
 ### D
 
 It stands for "differential"
 When there is only "proportional," it will keep overshooting the x-axis and oscillating. So, we need an extra term to adjust the steering and finally reach the marginal stable state.
 We just need to add a differential term
-$$ \alpha = - \tau*p \* cte - \tau_d \frac{d}{dt} cte $$
-where $$\frac{d}{dt} cte = \frac{cte_t - cte*{t-1}}{\Delta t}$$
+$$\alpha = - \tau_{p} \cdot cte - \tau_d \frac{d}{dt} cte$$
+where $$\frac{d}{dt} cte = \frac{cte_t - cte\cdot{t-1}}{\Delta t}$$
 
 ## Summary of PID
 
-$$\alpha = - \tau_p cte - \tau_d \frac{d}{dt}cte - \tau_i\sum cte$$
+$$\alpha = - \tau_p \cdot cte - \tau_d \frac{d}{dt}cte - \tau_i\sum cte$$
 
 ## How to find $\tau$
 
