@@ -1,7 +1,6 @@
 ---
 title: How to copy to clipboard in Linux/macOS
-keywords:
-- til
+keywords: til
 date: 2021-09-20T17:25:59-0700
 ---
 
