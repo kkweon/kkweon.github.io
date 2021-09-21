@@ -46,7 +46,9 @@ class AddThis extends React.Component<IProps> {
     script.onload = () => {
       window.addthis.init()
       window.addEventListener('load', () => {
-        window.addthis.layers.refresh()
+        if (typeof window?.addthis?.layers?.refresh === "function") {
+          window.addthis.layers.refresh()
+        }
       })
     }
 
