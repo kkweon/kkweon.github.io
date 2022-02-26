@@ -36,8 +36,8 @@
 <h1>this in a nested function<a id="sec-1"></a></h1>
 <p>When there is a nested function, it gets confusing</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> numbers <span class="token operator">=</span> <span class="token punctuation">{</span>
-  a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
 
   <span class="token function-variable function">sum</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// `this` -> numbers</span>
@@ -57,8 +57,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>When it's nested, its execution context is actually in global scope.</p>
 <p>In order to fix the problem,</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> numbers <span class="token operator">=</span> <span class="token punctuation">{</span>
-  a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
 
   <span class="token function-variable function">sum</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// `this` -> numbers</span>
