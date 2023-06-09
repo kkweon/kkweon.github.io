@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-post-template-tsx",
-    "path": "/posts/image-normalization-featurewise-vs-samplewise",
-    "result": {"data":{"markdownRemark":{"html":"<p>Image normalization Jupyter notebook: <a href=\"https://gist.github.com/kkweon/87049a265265b04d8b1d7acce278ba11\">here</a></p>","excerpt":"Image normalization Jupyter notebook: here","frontmatter":{"date":"July 25, 2017","title":"Image Normalization (Featurewise vs Samplewise)","keywords":null,"description":null},"fields":{"slug":"posts/image-normalization-featurewise-vs-samplewise"}}},"pageContext":{"slug":"posts/image-normalization-featurewise-vs-samplewise"}},
-    "staticQueryHashes": []}
+{"componentChunkName":"component---src-templates-post-template-tsx","path":"/posts/image-normalization-featurewise-vs-samplewise","result":{"data":{"markdownRemark":{"html":"<p>Image normalization Jupyter notebook: <a href=\"https://gist.github.com/kkweon/87049a265265b04d8b1d7acce278ba11\">here</a></p>","excerpt":"Image normalization Jupyter notebook: here","frontmatter":{"date":"July 25, 2017","title":"Image Normalization (Featurewise vs Samplewise)","keywords":null,"description":null},"fields":{"slug":"posts/image-normalization-featurewise-vs-samplewise"}}},"pageContext":{"slug":"posts/image-normalization-featurewise-vs-samplewise"}},"staticQueryHashes":[]}
