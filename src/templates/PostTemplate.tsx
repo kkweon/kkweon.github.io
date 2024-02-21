@@ -1,7 +1,6 @@
 import React from 'react'
 import Disqus from '../components/Disqus'
 import Meta from '../components/Meta'
-import AddThis from '../components/AddThis'
 import 'katex/dist/katex.min.css'
 import { graphql } from 'gatsby'
 import Layout from '../components'
@@ -60,11 +59,6 @@ export default function Template({ data }: IBlogPost) {
           />
         </article>
 
-        <AddThis
-          slug={slug}
-          title={frontmatter.title}
-          description={description}
-        />
         <Disqus identifier={slug} />
       </section>
     </Layout>
