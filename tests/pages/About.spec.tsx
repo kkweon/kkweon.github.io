@@ -4,6 +4,6 @@ import { shallow } from 'enzyme'
 
 test('<About /> has about text', () => {
   // Render a checkbox with label in the document
-  const component = shallow(<About />)
+  const component = shallow((<About />) as any)
   expect(component.find('div').text()).toContain('About')
 })

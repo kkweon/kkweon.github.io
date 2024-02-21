@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import Pagination from '../components/Pagination'
 import { css } from 'glamor'
 import glamorous from 'glamorous'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../utils/variables'
 import Layout from '../components'
 import Typography from '../utils'
+import { Link } from 'gatsby'
 
 const rhythm = Typography.rhythm
 
