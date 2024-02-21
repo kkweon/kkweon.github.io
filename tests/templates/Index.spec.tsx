@@ -73,6 +73,6 @@ const data: IData = {
 
 test('<Index /> has posts compoent', () => {
   // Render a checkbox with label in the document
-  const wrapper = shallow(<Index {...data} />)
+  const wrapper = shallow((<Index {...data} />) as any)
   expect(wrapper.find('Post').length).toBe(pathContext.group.length)
 })

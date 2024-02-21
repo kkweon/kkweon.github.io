@@ -1,8 +1,8 @@
 import * as React from 'react'
-import Link from 'gatsby-link'
 import { rhythm } from '../../utils'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../utils/variables'
 import { css } from 'glamor'
+import { Link } from 'gatsby'
 
 interface INavLinkProp {
   test: boolean
