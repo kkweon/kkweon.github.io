@@ -45,8 +45,9 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build && yarn run build:CNAME",
+    "build": "gatsby build && yarn run build:CNAME && yarn run build:ADSENSE",
     "build:CNAME": "cp CNAME public/CNAME",
+    "build:ADSENSE": "cp ./ads.txt public/ads.txt",
     "serve": "gatsby serve",
     "develop": "gatsby develop",
     "start": "yarn develop",
@@ -72,5 +73,6 @@
     "regenerator-runtime": "^0.14.1",
     "ts-jest": "^29.1.2",
     "typescript": "^5.3.3"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
