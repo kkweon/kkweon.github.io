@@ -1,7 +1,4 @@
 import * as React from 'react'
-import { rhythm } from '../../utils'
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../../utils/variables'
-import { css } from 'glamor'
 import { Link } from 'gatsby'
 
 interface INavLinkProp {
@@ -12,19 +9,8 @@ interface INavLinkProp {
 
 const NavLink = (props: INavLinkProp) => {
   if (!props.test) {
-    const linkStyle = css({
-      color: 'black',
-      backgroundColor: SECONDARY_COLOR,
-      padding: rhythm(0.5),
-      textDecoration: 'none',
-
-      '&:hover': {
-        color: 'white',
-        backgroundColor: PRIMARY_COLOR,
-      },
-    })
     return (
-      <Link {...linkStyle} to={props.url}>
+      <Link className="pagination-nav-link" to={props.url}>
         {' '}
         {props.text}{' '}
       </Link>
@@ -47,13 +33,8 @@ export default function Pagination({
   last,
   nextUrl,
 }: IPagination) {
-  const paginationStyle = css({
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginTop: rhythm(2),
-  })
   return (
-    <div {...paginationStyle} className="pagination">
+    <div className="pagination pagination-style">
       <div className="pagination__prev">
         <NavLink test={first} url={'/' + previousUrl} text="Prev Page" />
       </div>

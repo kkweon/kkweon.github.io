@@ -8,3 +8,132 @@ $fa-font-path: '../../node_modules/font-awesome/fonts';
 @import 'modules/nav';
 @import 'modules/post-list';
 @import 'modules/post';
+
+// Styles for Header component
+.header-nav {
+  margin-bottom: 1.5rem; // rhythm(1)
+}
+
+.header-ul {
+  display: flex;
+  padding: 1.5rem 1.05rem 0.75rem; // rhythm(1) rhythm(0.7) rhythm(0.5)
+  list-style: none;
+  margin-bottom: 0;
+}
+
+// Utility classes (can be used by Header or other components)
+.util-no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.util-margin-left-auto {
+  margin-left: auto;
+}
+
+.util-margin-left-1r {
+  margin-left: 1.5rem; // rhythm(1)
+}
+
+.util-small-screen-display-none {
+  @media screen and (max-width: 600px) {
+    display: none !important;
+  }
+}
+
+.util-small-screen-display-inline {
+  display: none;
+  @media screen and (max-width: 600px) {
+    display: inline-block !important;
+  }
+}
+
+// Styles for Index.tsx template
+.template-index-post-link {
+  padding: 1.5rem; // rhythm(1)
+  border: 1px solid black;
+  margin-bottom: 1.5rem; // rhythm(1)
+  box-shadow: 0 3px 3px #696969;
+}
+
+.template-index-read-more-btn {
+  color: white;
+  text-decoration: none;
+  border: 1px solid #0381ff; // PRIMARY_COLOR
+  background: #0381ff; // PRIMARY_COLOR
+  padding: 0.6rem; // rhythm(0.4)
+  transition: all 0.2s;
+  display: inline-block; // Added for proper padding and link behavior
+
+  &:hover {
+    color: black;
+    border: 1px solid #ffe203; // SECONDARY_COLOR
+    background: #ffe203; // SECONDARY_COLOR
+  }
+}
+
+.template-index-post-title {
+  margin-bottom: 0.3rem; // rhythm(0.2)
+}
+
+.template-index-post-date {
+  color: #999;
+  margin-bottom: 0.75rem; // rhythm(0.5)
+}
+
+// Styles for Footer component
+.footer-style {
+  background-color: #444;
+  color: #fff;
+  min-height: 15vh;
+  margin-top: 2.25rem; // rhythm(1.5)
+  padding: 2.25rem 0; // rhythm(1.5) 0
+}
+
+.footer-text-style {
+  padding: 1.5rem 0 0; // rhythm(1) 0 0
+  text-align: center;
+}
+
+.footer-icon-list-style {
+  display: flex;
+  justify-content: space-around;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+// Styles for BackButton component
+.back-button-style {
+  display: inline-block;
+  margin-bottom: 1.5rem; // rhythm(1)
+  cursor: pointer;
+  color: #0381ff; // PRIMARY_COLOR
+  text-decoration: none; // Added for consistency for link buttons
+
+  &:hover {
+    text-decoration: underline; // Added for better UX
+  }
+}
+
+.back-button-icon-style {
+  margin-right: 0.75rem; // rhythm(0.5)
+}
+
+// Styles for Pagination component
+.pagination-style {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem; // rhythm(2)
+}
+
+.pagination-nav-link {
+  color: black;
+  background-color: #ffe203; // SECONDARY_COLOR
+  padding: 0.75rem; // rhythm(0.5)
+  text-decoration: none;
+  display: inline-block; // Added for proper padding and link behavior
+
+  &:hover {
+    color: white;
+    background-color: #0381ff; // PRIMARY_COLOR
+  }
+}
