@@ -41,9 +41,6 @@
   ],
   "license": "MIT",
   "main": "n/a",
-  "resolutions": {
-    "cheerio": "0.22.0"
-  },
   "scripts": {
     "build": "gatsby build && yarn run build:CNAME && yarn run build:ADSENSE",
     "build:CNAME": "cp CNAME public/CNAME",
