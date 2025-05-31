@@ -1,24 +1,20 @@
 import * as React from 'react'
-import ReactDisqusComments from 'react-disqus-comments'
+import { DiscussionEmbed } from 'disqus-react'
 
 interface IProp {
   identifier: string
 }
 
-interface IComment {
-  text: string
-}
-
 const Disqus = ({ identifier }: IProp) => {
-  return (
-    <ReactDisqusComments
-      shortname="kyungmokweon"
-      identifier={identifier}
-      url={process.env.SITEURL + '/' + identifier}
-      title="My Disqus"
-      onNewComment={(comment: IComment) => console.log(comment.text)}
-    />
-  )
+  const shortname = 'kyungmokweon'
+  const url = (process.env.SITEURL || 'https://kkweon.dev') + '/' + identifier
+  const config = {
+    url,
+    identifier,
+    title: 'My Disqus',
+    language: 'en',
+  }
+  return <DiscussionEmbed shortname={shortname} config={config} />
 }
 
 export default Disqus
