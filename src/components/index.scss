@@ -1,13 +1,17 @@
-$fa-font-path: '../../node_modules/font-awesome/fonts';
-@import '~font-awesome/scss/font-awesome';
+@use 'font-awesome/scss/font-awesome.scss' with (
+  $fa-font-path: '../../node_modules/font-awesome/fonts'
+);
+@use 'modules/base';
+@use 'modules/footer';
+@use 'modules/nav';
+@use 'modules/post-list';
+@use 'modules/post';
+
+// $fa-font-path is now configured above with @use ... with
+// $fa-font-path: '../../node_modules/font-awesome/fonts';
 
 @import url(https://cdn.jsdelivr.net/gh/Joungkyun/font-d2coding@1.31.0/d2coding-ligature.min.css);
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-@import 'modules/base';
-@import 'modules/footer';
-@import 'modules/nav';
-@import 'modules/post-list';
-@import 'modules/post';
 
 // Styles for Header component
 .header-nav {

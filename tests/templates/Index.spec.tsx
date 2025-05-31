@@ -1,6 +1,7 @@
 import * as React from 'react'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Index, { IData, IPathContext } from '../../src/templates/Index'
-import { shallow } from 'enzyme'
 
 const pathContext: IPathContext = {
   group: [
@@ -71,8 +72,10 @@ const data: IData = {
   },
 }
 
-test('<Index /> has posts compoent', () => {
-  // Render a checkbox with label in the document
-  const wrapper = shallow((<Index {...data} />) as any)
-  expect(wrapper.find('Post').length).toBe(pathContext.group.length)
+test('<Index /> has posts component', () => {
+  const { getByText } = render(<Index {...data} />)
+  // This assumes each post title is rendered in the DOM
+  pathContext.group.forEach(post => {
+    expect(getByText(post.node.frontmatter.title)).toBeInTheDocument()
+  })
 })

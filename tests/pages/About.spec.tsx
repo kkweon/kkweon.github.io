@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import About from '../../src/pages/about'
-import { shallow } from 'enzyme'
 
 test('<About /> has about text', () => {
-  // Render a checkbox with label in the document
-  const component = shallow((<About />) as any)
-  expect(component.find('div').text()).toContain('About')
+  const { getAllByText } = render(<About />)
+  // There are multiple elements with 'About', so check that at least one exists
+  expect(getAllByText(/About/i).length).toBeGreaterThan(0)
 })
