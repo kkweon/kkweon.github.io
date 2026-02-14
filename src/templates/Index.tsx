@@ -2,6 +2,7 @@ import React from 'react'
 import Pagination from '../components/Pagination'
 import Layout from '../components'
 import { Link } from 'gatsby'
+import { Seo } from '../components/Seo'
 
 const ReadMoreBtn = ({ to }: { to: string }) => {
   return (
@@ -59,7 +60,7 @@ export interface IData {
 }
 
 export function Head() {
-  return <title>Mo's Notes</title>
+  return <Seo />
 }
 
 export default function ({ pageContext }: IData) {
@@ -68,7 +69,7 @@ export default function ({ pageContext }: IData) {
   const nextUrl = (index + 1).toString()
 
   return (
-    <Layout>
+    <Layout isHome={index === 1}>
       <div>
         {group.map(({ node }) => (
           <Post

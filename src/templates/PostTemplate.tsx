@@ -4,6 +4,7 @@ import 'katex/dist/katex.min.css'
 import { graphql, HeadProps } from 'gatsby'
 import Layout from '../components'
 import { BackButton } from '../components/Buttons/BackButton'
+import { Seo } from '../components/Seo'
 
 interface IBlogPost {
   data: {
@@ -56,30 +57,21 @@ export default function Template({ data }: IBlogPost) {
 }
 
 export function Head({ data }: HeadProps<IBlogPost['data']>) {
-  const { frontmatter, excerpt } = data.markdownRemark
+  const { frontmatter, excerpt, fields } = data.markdownRemark
   const description = frontmatter.description || excerpt
   const title = frontmatter.title
 
   return (
-    <>
-      <title>{title}</title>
-      <meta name="keywords" content={frontmatter.keywords} />
-      <meta name="description" content={description} />
-      <meta itemProp="name" content={title} />
-      <meta itemProp="description" content={description} />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="og:title" content={title} />
-      <meta name="og:description" content={description} />
-      <meta name="og:site_name" content={title} />
-      <meta name="og:locale" content="en_US" />
-      <meta name="og:type" content="article" />
-      <meta name="article:section" content="Technology" />
-      <meta name="article:published_time" content={frontmatter.date} />
-      <meta name="article:author" content="Kyung Mo Kweon" />
-      <meta name="article:tag" content={frontmatter.keywords} />
-    </>
+    <Seo
+      title={title}
+      description={description}
+      pathname={`/${fields.slug}`}
+      isArticle={true}
+      publishedTime={frontmatter.date}
+      keywords={frontmatter.keywords}
+      section="Technology"
+      author="Kyung Mo Kweon"
+    />
   )
 }
 
