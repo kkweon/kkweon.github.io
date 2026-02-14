@@ -55,7 +55,6 @@ export default class HTML extends React.Component<IHtmlProps, void> {
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-            integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rByDn93BE3jUJHMbY00/Cr/XQ9z/GBkD3PE3hFFnfnit3F6Q+sK9lg=="
             crossOrigin="anonymous"
             referrerPolicy="no-referrer"
           />
