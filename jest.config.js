@@ -19,4 +19,5 @@ module.exports = {
   testEnvironmentOptions: {
     url: `http://localhost`,
   },
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
 }
