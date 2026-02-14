@@ -1,8 +1,7 @@
 import React from 'react'
 import Disqus from '../components/Disqus'
-import Meta from '../components/Meta'
 import 'katex/dist/katex.min.css'
-import { graphql } from 'gatsby'
+import { graphql, HeadProps } from 'gatsby'
 import Layout from '../components'
 import { BackButton } from '../components/Buttons/BackButton'
 
@@ -31,21 +30,12 @@ export default function Template({ data }: IBlogPost) {
     frontmatter,
     html,
     fields: { slug },
-    excerpt,
   } = data.markdownRemark
-
-  const description = frontmatter.description || excerpt
 
   return (
     <Layout>
       <BackButton />
       <section className="post-container">
-        <Meta
-          title={frontmatter.title}
-          date={frontmatter.date}
-          description={description}
-          tags={frontmatter.keywords}
-        />
         <article className="post">
           <header className="post__header">
             <h2>{frontmatter.title}</h2>
@@ -62,6 +52,34 @@ export default function Template({ data }: IBlogPost) {
         <Disqus identifier={slug} />
       </section>
     </Layout>
+  )
+}
+
+export function Head({ data }: HeadProps<IBlogPost['data']>) {
+  const { frontmatter, excerpt } = data.markdownRemark
+  const description = frontmatter.description || excerpt
+  const title = frontmatter.title
+
+  return (
+    <>
+      <title>{title}</title>
+      <meta name="keywords" content={frontmatter.keywords} />
+      <meta name="description" content={description} />
+      <meta itemProp="name" content={title} />
+      <meta itemProp="description" content={description} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="og:title" content={title} />
+      <meta name="og:description" content={description} />
+      <meta name="og:site_name" content={title} />
+      <meta name="og:locale" content="en_US" />
+      <meta name="og:type" content="article" />
+      <meta name="article:section" content="Technology" />
+      <meta name="article:published_time" content={frontmatter.date} />
+      <meta name="article:author" content="Kyung Mo Kweon" />
+      <meta name="article:tag" content={frontmatter.keywords} />
+    </>
   )
 }
 

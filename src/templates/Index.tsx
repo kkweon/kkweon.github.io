@@ -58,6 +58,10 @@ export interface IData {
   pageContext: IPathContext
 }
 
+export function Head() {
+  return <title>Mo's Notes</title>
+}
+
 export default function ({ pageContext }: IData) {
   const { group, index, first, last } = pageContext
   const previousUrl = index - 1 == 1 ? '' : (index - 1).toString()

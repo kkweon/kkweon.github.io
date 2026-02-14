@@ -1,5 +1,9 @@
 import React from 'react'
 
+export function Head() {
+  return <title>Not Found - Mo's Notes</title>
+}
+
 const NotFoundPage = () => (
   <div>
     <h1>NOT FOUND</h1>
