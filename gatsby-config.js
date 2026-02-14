@@ -4,6 +4,8 @@ module.exports = {
   siteMetadata: {
     title: "Mo's Notes",
     siteUrl: 'https://kkweon.dev',
+    description: "Mo's Notes - A blog about software engineering, technology, and learning.",
+    author: '@kkweon',
   },
   plugins: [
     'gatsby-plugin-sharp',
