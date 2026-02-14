@@ -20,6 +20,9 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-sitemap`,
+      options: {
+        excludes: ['/404', '/404.html', '/dev-404-page'],
+      },
     },
     {
       resolve: 'gatsby-plugin-google-tagmanager',
