@@ -10,6 +10,11 @@
 // Styles for Header component
 .header-nav {
   margin-bottom: 1.5rem; // rhythm(1)
+
+  h1 {
+    font-size: 33.0682px;
+    line-height: 40.5px;
+  }
 }
 
 .header-ul {

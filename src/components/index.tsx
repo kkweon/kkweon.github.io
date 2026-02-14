@@ -9,10 +9,16 @@ import './index.scss'
 // syntax highlighting
 import 'prismjs/themes/prism-okaidia.css'
 
-export default function ({ children }: { children: any }) {
+export default function ({
+  children,
+  isHome,
+}: {
+  children: any
+  isHome?: boolean
+}) {
   return (
     <div>
-      <Header />
+      <Header isHome={isHome} />
       <div
         className="container"
         style={{
