@@ -35,7 +35,14 @@ module.exports = {
         defaultDataLayer: { platform: 'gatsby' },
       },
     },
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api'],
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-typography',
       options: {
