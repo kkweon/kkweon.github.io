@@ -1,8 +1,9 @@
 import React from 'react'
 import Layout from '../components'
+import { Seo } from '../components/Seo'
 
 export function Head() {
-  return <title>About - Mo's Notes</title>
+  return <Seo title="About - Mo's Notes" pathname="/about" />
 }
 
 export default function About() {

@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: 'https://kkweon.dev',
     description: "Mo's Notes - A blog about software engineering, technology, and learning.",
     author: '@kkweon',
+    image: '/apple-touch-icon.png',
   },
   plugins: [
     'gatsby-plugin-sharp',
