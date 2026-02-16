@@ -11,17 +11,22 @@ export default function About() {
     <Layout>
       <div>
         <h2>About</h2>
-        <p>My interests include the following but not limited to</p>
-        <ul>
-          <li>Machine Learning</li>
-          <li>Microservice</li>
-          <li>Web Development</li>
-          <li>Kubernetes</li>
-        </ul>
+        <p>
+          This is where I write down things I need to remember—mostly because
+          I've either spent too long figuring them out or I know I'll forget them
+          in six months.
+        </p>
 
         <p>
-          This is a blog where I write down something I need to remember for
-          future reference
+          My notes tend to cover machine learning, web development, Kubernetes,
+          and whatever tools I'm currently debugging. If you've googled your way
+          here looking for how to do something specific, there's a decent chance
+          I've already made the same mistake.
+        </p>
+
+        <p>
+          I write the posts I wish existed when I was stuck. If they help you too,
+          that's a bonus.
         </p>
       </div>
     </Layout>
