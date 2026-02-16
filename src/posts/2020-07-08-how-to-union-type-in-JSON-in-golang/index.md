@@ -1,163 +1,92 @@
 ---
 title: How to handle multiple JSON responses in Go
-keywords: go,golang
+keywords: go,golang,json,discriminated union,type safety
 date: '2020-07-08'
 ---
 
-# Introduction
+When an API returns different JSON structures in the same field, you need **type-safe discriminated unions**. Here's how to handle this in Go.
 
-If your API returns a single type JSON, you can use [https://mholt.github.io/json-to-go/](https://mholt.github.io/json-to-go/). But, it gets tricky if there are multiple structures in the responses. And, it gets even trickier if the embedded structures are different.
+## The Problem
 
-For simplicity, see the following example.
+Your API returns the same root structure, but with different inner objects:
 
 ```json
-{
-  "data": {
-    "error_message": "not able to find data"
-  }
-}
+{"data": {"error_message": "not able to find data"}}
 ```
 
 ```json
-{
-  "data": {
-    "message": "hello world"
-  }
-}
+{"data": {"message": "hello world"}}
 ```
 
-As you can see the root structure(`{ "data": { ... } }`) is the same while the inner objects are different.
+## The Solution
 
-In Go, you can express in the following.
+Use a wrapper type with a custom `UnmarshalJSON` method:
 
-````go
+```go
 import "encoding/json"
 
-// Root represents the following JSON
-// {
-//   "data": {
-//      "message": "..."
-//   }
-// }
-//
-// or
-//
-// {
-//   "data": {
-//      "error_message": "..."
-//   }
-// }
 type Root struct {
-	Data DataWrapper `json:"data"`
+    Data DataWrapper `json:"data"`
 }
 
 type DataWrapper struct {
-	ErrorData   *ErrorDataType   `json:"-"`
-	MessageData *MessageDataType `json:"-"`
+    ErrorData   *ErrorDataType   `json:"-"`
+    MessageData *MessageDataType `json:"-"`
 }
 
-// UnmarshalJSON will receive either
-//
-// 1. ErrorDataType
-// ```json
-// {
-//   "error_message": "error blah blah"
-// }
-// ```
-//
-// 2. MessageDataType
-// ```json
-// {
-//   "message": "blah blah"
-// }
-// ```
 func (d *DataWrapper) UnmarshalJSON(data []byte) error {
-	var m map[string]interface{}
-	var err error
+    var m map[string]interface{}
+    if err := json.Unmarshal(data, &m); err != nil {
+        return err
+    }
 
-	if err = json.Unmarshal(data, &m); err != nil {
-		return err
-	}
+    if _, ok := m["error_message"]; ok {
+        var errorData ErrorDataType
+        if err := json.Unmarshal(data, &errorData); err != nil {
+            return err
+        }
+        d.ErrorData = &errorData
+        return nil
+    }
 
-	if _, ok := m["error_message"]; ok {
-		var errorData ErrorDataType
-		err = json.Unmarshal(data, &errorData)
-		if err != nil {
-			return err
-		}
-		d.ErrorData = &errorData
-		return nil
-	}
+    if _, ok := m["message"]; ok {
+        var messageData MessageDataType
+        if err := json.Unmarshal(data, &messageData); err != nil {
+            return err
+        }
+        d.MessageData = &messageData
+        return nil
+    }
 
-	if _, ok := m["message"]; ok {
-		var messageData MessageDataType
-		err = json.Unmarshal(data, &messageData)
-		if err != nil {
-			return err
-		}
-		d.MessageData = &messageData
-		return nil
-	}
-
-	return nil
+    return nil
 }
 
 type ErrorDataType struct {
-	ErrorMessage string `json:"error_message"`
+    ErrorMessage string `json:"error_message"`
 }
 
 type MessageDataType struct {
-	Message string `json:"message"`
-}
-````
-
-The idea is that I created an wrapper object that only exists in Go.
-
-```go
-type DataWrapper struct {
-	ErrorData   *ErrorDataType   `json:"-"`
-	MessageData *MessageDataType `json:"-"`
+    Message string `json:"message"`
 }
 ```
 
-And then this struct implements `UnmarshalJSON` method that deals with the sub message portion of the JSON.
+The key insight: `DataWrapper` uses `json:"-"` tags so it exists only in Go code, not in JSON. The `UnmarshalJSON` method checks which fields exist to determine the variant.
 
-Once we are done, we can simply unmarshal without knowing the implementation details.
+## Usage
 
 ```go
-func TestRoot_UnmarshalErrorData(t *testing.T) {
-	input := `
-  {
-    "data": {
-      "error_message": "this is error_message"
-    }
-  }
-  `
+var root Root
+json.Unmarshal([]byte(jsonInput), &root)
 
-	var root Root
-
-	err := json.Unmarshal([]byte(input), &root)
-	assert.NoError(t, err)
-
-	assert.Nil(t, root.Data.MessageData)
-	assert.Equal(t, root.Data.ErrorData.ErrorMessage, "this is error_message")
+if root.Data.ErrorData != nil {
+    // Handle error case
+    fmt.Println(root.Data.ErrorData.ErrorMessage)
 }
 
-func TestRoot_UnmarshalMessageData(t *testing.T) {
-	input := `
-  {
-    "data": {
-      "message": "this is message"
-    }
-  }
-  `
-
-	var root Root
-
-	err := json.Unmarshal([]byte(input), &root)
-	assert.NoError(t, err)
-
-	assert.Nil(t, root.Data.ErrorData)
-	assert.Equal(t, root.Data.MessageData.Message, "this is message")
+if root.Data.MessageData != nil {
+    // Handle success case
+    fmt.Println(root.Data.MessageData.Message)
 }
 ```
+
+This gives you compile-time type safety when accessing the discriminated variants.
