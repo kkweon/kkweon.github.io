@@ -1,104 +1,111 @@
 ---
-title: Webpack, Typescript, Nodemon, and Node.js
+title: Bundle TypeScript with Webpack and Nodemon for Node.js
 date: 2018-02-07T10:16:40
+updated: 2026-02-16
 keywords: Webpack, Typescript, Nodemon
 ---
 
-This post is to describe how to use Webpack, Typescript, and Nodemon with Node.js.
+This post shows how to use Webpack to bundle TypeScript for Node.js with auto-reload during development.
 
-## Why Webpack?
+## Why Webpack for Node.js?
 
-Webpack bundles all JavaScript into a single file. It works great for bundling front end applications, but you can also use that with Node.js application.
-It produces a single js file and other HTML/CSS asset files. With sourcemaps, there is no problem in debugging the file.
-It works great because if I am using typescript, it has to be compiled into JavaScript, preferrably in a separate directory such as `/dist` or `/build`. Since TypeScript does not bundle into one js file (unless you use `systemjs`), there will be so many JavaScript files created, but you don't have to care because the source code is in TypeScript anyway. But, I believe there is no performance gain in bundling into a single file, but it's much portable.
+Webpack bundles all your TypeScript files and dependencies into a single JavaScript file.
 
-## Why Typescript?
+**Benefits:**
+- Same bundled output for development and production
+- Single distributable file
+- Tree-shaking and optimization
+- Source maps for debugging
 
-TypeScript is so awesome. It's the future of JavaScript. One caveat is that it needs more setups. For example, you will need to install
+## Installation
 
-- typescript
-- tslint
-- ts-node
-- awesome-typescript-loader
+```bash
+npm install --save-dev typescript webpack webpack-cli ts-loader nodemon concurrently @types/node
+```
 
-and more such as typescript-formatter.
+## webpack.config.js
 
-## Why Nodemon?
+```javascript
+const path = require('path');
 
-Nodemon is almost required for every express project.
-
-> Monitor for any changes in your node.js application and automatically restart the server - perfect for development http://nodemon.io/
-
-## How to make it work together?
-
-These tools are so powerful that I lost how to set up because there would be so many ways of doing it.
-For example, `tsc` will compile `**/*.ts` to `./dist/**/*.js`. But what about HTML/CSS Files?
-
-If you let webpack do it, you have to be careful when using native node modules because the default webpack config will try to bundle as it would run on browsers. So, here is how I did it.
-
-It's same as normal ts project, but `target: "node"` and `file-loader` for HTML files, and then I import `html` files in source file, such that it'll be copied during webpack build.
-
-Here's the entire `webpack.config.ts` Note that I used `.ts`.
-
-```typescript
-import * as path from 'path'
-import * as webpack from 'webpack'
-
-const config: webpack.Configuration = {
+module.exports = {
+  mode: 'development',
+  target: 'node',
+  entry: './src/index.ts',
   devtool: 'source-map',
-  entry: {
-    server: './src/index.ts',
-  },
 
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'awesome-typescript-loader',
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              publicPath: 'dist/',
-            },
-          },
-        ],
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
 
-  output: {
-    filename: '[name].js',
-    path: path.join(__dirname, 'dist/'),
-  },
-
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    extensions: ['.ts', '.js'],
   },
-  target: 'node',
-}
 
-export default config
+  output: {
+    filename: 'server.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
 ```
 
-and then how to watch? After trying gulpfile, nodmeon.json, and ..., I settled down using the following NPM scripts.
-[npm-run-all](https://www.npmjs.com/package/npm-run-all) helps to run webpack and nodemon in parallel. Also it's cross-platform.
+**Note:** Use `ts-loader` (not `awesome-typescript-loader`, which is deprecated).
+
+## package.json
 
 ```json
-"scripts": {
-  # Mostly for development
-  "start": "PORT=4000 yarn npm-run-all --parallel watch:server watch:build",
-  "watch:build": "webpack --watch",
-  "watch:server": "nodemon \"./dist/server.js\" --watch \"./dist\"",
-
-  # Mostly for production
-  "build": "yarn clean && webpack --optimize-minimize",
-  "serve": "node dist/server.js",
-
-  # Cleaning
-  "clean": "rm -rf dist"
-},
+{
+  "scripts": {
+    "dev": "concurrently \"npm run watch:build\" \"npm run watch:server\"",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon ./dist/server.js --watch ./dist",
+    "build": "webpack --mode production",
+    "start": "node dist/server.js"
+  }
+}
 ```
+
+## Why Nodemon?
+
+Nodemon watches your files and restarts the server automatically. Webpack rebuilds the bundle, then nodemon restarts the Node.js process.
+
+## How it works
+
+1. **Development:** `webpack --watch` rebuilds on changes → nodemon detects new bundle → restarts server
+2. **Production:** `webpack --mode production` creates optimized bundle → deploy single file
+
+Same bundled output in both environments.
+
+## Example: Simple Express Server
+
+```typescript
+// src/index.ts
+import express from 'express';
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello TypeScript!' });
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+```
+
+Run `npm run dev` and visit `http://localhost:3000`.
+
+## Summary
+
+Webpack bundles your TypeScript code into a single file for both development and production:
+
+- Use `webpack --watch` + nodemon for development with auto-reload
+- Use `webpack --mode production` for optimized production builds
+- Same bundled output in both environments ensures dev/prod parity
