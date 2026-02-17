@@ -48,7 +48,34 @@ Adding a new method to `SomeService` now has zero impact on consumers or their t
 
 ## The Java-Style Mistake
 
-A common pattern for Go developers coming from Java. The producer defines an interface and returns it:
+A common pattern for Go developers coming from Java. The producer owns the interface — every consumer depends on it:
+
+```
+┌─────────────────────────────────────────┐
+│              producer.go                │
+│                                         │
+│  «interface»                            │
+│  SomeService  ◄─────────────────────┐  │
+│  DoSomething()                       │  │
+│       △                              │  │
+│       │ implements                   │  │
+│  someServiceImpl                     │  │
+└─────────────────────────────────────────┘
+          │ returns SomeService
+          ▼
+┌──────────────────┐   ┌──────────────────┐
+│   consumer.go    │   │ consumer_test.go  │
+│                  │   │                  │
+│ depends on       │   │ someMockService   │
+│ SomeService ─────┼───┼──► must implement│
+│                  │   │    SomeService   │
+└──────────────────┘   └──────────────────┘
+
+  Adding a method to SomeService forces
+  changes in ALL files above  ⚠️
+```
+
+The producer defines an interface and returns it:
 
 ```go
 type SomeService interface {
@@ -104,6 +131,35 @@ Adding a new method to `SomeService` breaks every consumer and every mock:
 Because the interface is defined on the producer side, every file that depends on it — including test mocks — must be updated. The more consumers you have, the worse this gets.
 
 ## The Fix
+
+Each consumer owns its own interface — the producer knows nothing about them:
+
+```
+┌─────────────────────────────────────────┐
+│              producer.go                │
+│                                         │
+│  SomeService struct                     │
+│  DoSomething()                          │
+│  DoOtherThing()   ← add freely, no     │
+│                     downstream breakage │
+└─────────────────────────────────────────┘
+          │ returns *SomeService
+          │ (concrete type)
+          ▼
+┌──────────────────┐   ┌──────────────────┐
+│   consumer.go    │   │  other_consumer  │
+│                  │   │                  │
+│ «interface»      │   │ «interface»      │
+│ SomethingDoer    │   │ Doer             │
+│ DoSomething() ◄──┘   │ DoSomething() ◄──┘
+│                  │   │                  │
+│ only what it     │   │ only what it     │
+│ needs            │   │ needs            │
+└──────────────────┘   └──────────────────┘
+
+  Each consumer is isolated. ✓
+  Adding methods to producer affects nobody.
+```
 
 Two rules:
 
