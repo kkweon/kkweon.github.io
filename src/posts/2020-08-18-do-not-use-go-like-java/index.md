@@ -212,13 +212,11 @@ Adding a method to the producer has zero impact on the consumer:
   // producer.go
   type SomeService struct{}
 
-- func NewSomeService() SomeService {
-+ func NewSomeService() *SomeService {
+  func NewSomeService() *SomeService {
     return &SomeService{}
   }
 
-- func (s SomeService) DoSomething() string {
-+ func (s *SomeService) DoSomething() string {
+  func (s *SomeService) DoSomething() string {
     return "some-service"
   }
 
