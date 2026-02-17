@@ -50,30 +50,38 @@ Adding a new method to `SomeService` now has zero impact on consumers or their t
 
 A common pattern for Go developers coming from Java. The producer owns the interface — every consumer depends on it:
 
-```
-┌─────────────────────────────────────────┐
-│              producer.go                │
-│                                         │
-│  «interface»                            │
-│  SomeService  ◄─────────────────────┐  │
-│  DoSomething()                       │  │
-│       △                              │  │
-│       │ implements                   │  │
-│  someServiceImpl                     │  │
-└─────────────────────────────────────────┘
-          │ returns SomeService
-          ▼
-┌──────────────────┐   ┌──────────────────┐
-│   consumer.go    │   │ consumer_test.go  │
-│                  │   │                  │
-│ depends on       │   │ someMockService   │
-│ SomeService ─────┼───┼──► must implement│
-│                  │   │    SomeService   │
-└──────────────────┘   └──────────────────┘
+```mermaid
+classDiagram
+    namespace Producer_Package {
+        class BigInterface {
+            <<interface>>
+            +DoSomething()
+            +DoOtherThing()
+            ❌ Add more methods?
+        }
+        class RealService {
+            +DoSomething()
+            +DoOtherThing()
+        }
+    }
 
-  Adding a method to SomeService forces
-  changes in ALL files above  ⚠️
+    namespace Consumer_Package {
+        class Client
+        class TestMock {
+            +DoSomething()
+            +DoOtherThing() 😫
+        }
+    }
+
+    RealService ..|> BigInterface
+    Client ..> BigInterface : 🔗 Tight Coupling
+    TestMock ..|> BigInterface : ❌ MUST implement ALL
+
+    style BigInterface fill:#fdd,stroke:#c00,color:#000
+    style TestMock fill:#fdd,stroke:#c00,color:#000
 ```
+
+**The problem:** Producer owns the interface. When you add `DoOtherThing()` to `SomeService`, ALL implementers break — the real implementation AND every test mock must be updated.
 
 The producer defines an interface and returns it:
 
@@ -134,32 +142,36 @@ Because the interface is defined on the producer side, every file that depends o
 
 Each consumer owns its own interface — the producer knows nothing about them:
 
-```
-┌─────────────────────────────────────────┐
-│              producer.go                │
-│                                         │
-│  SomeService struct                     │
-│  DoSomething()                          │
-│  DoOtherThing()   ← add freely, no     │
-│                     downstream breakage │
-└─────────────────────────────────────────┘
-          │ returns *SomeService
-          │ (concrete type)
-          ▼
-┌──────────────────┐   ┌──────────────────┐
-│   consumer.go    │   │  other_consumer  │
-│                  │   │                  │
-│ «interface»      │   │ «interface»      │
-│ SomethingDoer    │   │ Doer             │
-│ DoSomething() ◄──┘   │ DoSomething() ◄──┘
-│                  │   │                  │
-│ only what it     │   │ only what it     │
-│ needs            │   │ needs            │
-└──────────────────┘   └──────────────────┘
+```mermaid
+classDiagram
+    namespace Producer_Package {
+        class ConcreteService {
+            +DoSomething()
+            +DoOtherThing()
+            ✓ Add methods freely
+        }
+    }
 
-  Each consumer is isolated. ✓
-  Adding methods to producer affects nobody.
+    namespace Consumer_Package {
+        class Client
+        class SmallInterface {
+            <<interface>>
+            +DoSomething()
+        }
+        class MinimalMock {
+            +DoSomething() 😌
+        }
+    }
+
+    ConcreteService ..|> SmallInterface : 🤝 Implicitly Satisfies
+    Client ..> SmallInterface : 🛡️ Isolated
+    MinimalMock ..|> SmallInterface : ✅ Only what is used
+
+    style SmallInterface fill:#dfd,stroke:#0a0,color:#000
+    style MinimalMock fill:#dfd,stroke:#0a0,color:#000
 ```
+
+**The fix:** Each consumer owns its own interface and only declares what it needs. Adding `DoOtherThing()` to `SomeService` doesn't affect `Consumer` (which only uses `DoSomething()`). Each consumer is completely isolated.
 
 Two rules:
 
