@@ -68,6 +68,14 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-mermaid',
+            options: {
+              mermaidConfig: {
+                theme: 'neutral',
+              },
+            },
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 590,
